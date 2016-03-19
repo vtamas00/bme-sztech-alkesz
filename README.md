@@ -1,0 +1,1 @@
+# bme-sztech-alkesz
