@@ -3,7 +3,6 @@
  */
 package control;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Warnings;
 
 /**
  * @author Dani
@@ -17,13 +16,13 @@ public class Food_Drink {
 		eSliceofPizza, eFattyBoard, eGyros, eHamburger, ePartyTray
 	}
 	
-	private Position myPos;
-	private Food_Drinks_Type myType;
-	private int mySpeed;
-	private int mySize;
-	private int myScore;
-	private int bloodAlcoholRatio;
-	private int spcial;
+	private Position myPos;		/* Position of the object */
+	private Food_Drinks_Type myType;	/* Object type */
+	private int mySpeed;		/* [Pixel/ms] */
+	private int mySize;			/* Round shape objects, this is the radius [pixels] */
+	private int myScore;		/* Value of the object */
+	private int bloodAlcoholRatio; 
+	private int special;
 	
 	/**
 	 * @return the myPos
@@ -390,7 +389,7 @@ public class Food_Drink {
 	 * @return the spcial
 	 */
 	public int getSpcial() {
-		return spcial;
+		return special;
 	}
 	/**
 	 * @param myType is the type of the current objectum
@@ -398,15 +397,16 @@ public class Food_Drink {
 	private void setSpcial(Food_Drinks_Type  myType) {
 		if(Food_Drinks_Type.ePartyTray == myType)
 		{
-			this.spcial = 3;
+			this.special = 3;
 		}
 		else
 		{
-			this.spcial = 0;
+			this.special = 0;
 		}
 		
 	}
 	
+	/*************************** Contructors **********************************/
 	/**
 	 * Default constructor
 	 */
@@ -453,15 +453,25 @@ public class Food_Drink {
 		setMyScore(this.myType);
 		setSpcial(this.myType);
 	}
+	
+	/************************ Other methods ***********************************/
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Food_Drink [myPos=" + myPos + ", myType=" + myType + ", mySpeed=" + mySpeed + ", mySize=" + mySize
-				+ ", myScore=" + myScore + ", bloodAlcoholRatio=" + bloodAlcoholRatio + ", spcial=" + spcial + "]";
+				+ ", myScore=" + myScore + ", bloodAlcoholRatio=" + bloodAlcoholRatio + ", spcial=" + special + "]";
 	}
-	
+	/**
+	 * 
+	 * @param elapsedTime the dynamic time stamp to calculate object position 
+	 */
+	public void CalcNewPos( int elapsedTime ) {
+		double newY = myPos.y+this.mySpeed*elapsedTime;
+		myPos.y=newY; 
+	}
 	
 	
 	

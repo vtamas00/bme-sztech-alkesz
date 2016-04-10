@@ -16,7 +16,8 @@ public class Player {
 	private Position myLastPos;		/* Holds the last position of the player */
 	private Position myPos;		/* Holds the current position of the player */
 	private int myBloodAlcoholRatio;	
-	private int myScore;
+	private int myScore;		
+	private int myHealh;		/* Maximum number of missed objects */
 	
 	/**
 	 * @param myLastPos the myLastPos to set
@@ -38,8 +39,8 @@ public class Player {
 	 * x = x + c*(sqrt(dx0^2+dx1^2))
 	 */
 	public void setMyPos(Position NewPos) {
-		int dx0;	/* Derivative of the last 2 position */
-		int dx1;	/* Derivative of the new and old position */
+		double dx0;	/* Derivative of the last 2 position */
+		double dx1;	/* Derivative of the new and old position */
 		
 		// calculate the derivative
 		dx0=this.myPos.x-this.myLastPos.x;
@@ -56,10 +57,10 @@ public class Player {
 		return myBloodAlcoholRatio;
 	}
 	/**
-	 * @param myBloodAlcoholRatio the myBloodAlcoholRatio to set
+	 * @param bloodAlcoholRatio will increase myBloodAlcoholRatio
 	 */
-	public void setMyBloodAlcoholRatio(int myBloodAlcoholRatio) {
-		this.myBloodAlcoholRatio = myBloodAlcoholRatio;
+	public void setMyBloodAlcoholRatio(int bloodAlcoholRatio) {
+		this.myBloodAlcoholRatio += bloodAlcoholRatio;
 	}
 	/**
 	 * @return the myScore
@@ -68,19 +69,47 @@ public class Player {
 		return myScore;
 	}
 	/**
-	 * @param myScore the myScore to set
+	 * @param extraScore will increase myScore
 	 */
-	public void setMyScore(int myScore) {
-		this.myScore = myScore;
+	public void setMyScore(int extraScore) {
+		this.myScore += extraScore;
 	}
 	
+	/**
+	 * @return the myHealh
+	 */
+	public int getMyHealh() {
+		return myHealh;
+	}
+	/**
+	 * @param myHealh the myHealh to set
+	 */
+	private void setMyHealh( ) {
+		this.myHealh = 10;	/* Default value, change here if needed! */
+	}
 	/************************* Constructors ***********************************/
 	
 	public Player(Position newPos) {
+		this.myLastPos = newPos;
+		this.myPos = newPos;
+		this.myScore = 0;
+		this.myBloodAlcoholRatio = 0;
 		setMyLastPos(newPos);
-		setMyBloodAlcoholRatio(0);
 		setMyPos(newPos);
-		setMyScore(0);
+		setMyHealh( );
 	}
 	
+	/*********************** Common methods ***********************************/
+	
+	/**
+	 * Decrease the health parameter of the object
+	 */
+	public void decreaseHealth() {
+		this.myHealh = this.myHealh - 1;
+		if( 0 == this.myHealh )
+		{
+			// You are dead!
+		}
+	}
+
 }

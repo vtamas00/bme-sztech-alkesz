@@ -8,34 +8,34 @@ package control;
  *
  */
 public class Position {
-	public int x;
-	public int y;
+	public double x;
+	public double y;
 	
 	/**
 	 * @return the x
 	 */
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
 	/**
 	 * @param newX the x to set
 	 */
-	public void setX(int newX) {
+	public void setX(double newX) {
 		this.x = newX;
 	}
 
 	/**
 	 * @return the y
 	 */
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 
 	/**
 	 * @param newY the y to set
 	 */
-	public void setY(int newY) {
+	public void setY(double newY) {
 		this.y = newY;
 	}
 
@@ -54,7 +54,7 @@ public class Position {
 	 * @param newX the x to set
 	 * @param newY the y to set
 	 */
-	public Position( int newX, int newY) {
+	public Position( double newX, double newY) {
 		setX(newX);
 		setY(newY);
 	}
@@ -67,5 +67,39 @@ public class Position {
 		return "Position [x=" + x + ", y=" + y + "]";
 	}
 	
-	
+	/**
+	 * This function compare two positions to each other. Generates a square 
+	 * around each position determined by compare value. If the two square has
+	 * common area they are "equal".
+	 * 
+	 * @param posA position to compare
+	 * @param posB position to compare
+	 * @param compareValue possible values: [0,1]
+	 * @param areaFactor determines the area around the positions
+	 * @return true if the the 2 position has matching radius
+	 */
+	public Boolean isPosAequalsPosB(Position posA, Position posB, double compareValue, int areaFactor) {
+		Boolean bReturn=false;
+		double factor = areaFactor*(1-compareValue);
+		double aLow[] = {posA.x-factor, posA.y-factor};
+		double aHigh[] = {posA.x+factor, posA.y+factor};
+		double bLow[] = {posB.x-factor, posB.y-factor};
+		double bHigh[] = {posB.x+factor, posB.y+factor};
+		
+		// Check the interval overlap
+		if( (aLow[0] >= bHigh[0]) && (aHigh[0] >= bLow[0]) )
+		{
+			// The x coordinate is overlap
+			bReturn=true;
+		}
+		else
+		{
+			if( (aLow[1] >= bHigh[1]) && (aHigh[1] >= bLow[1]) )
+			{
+				// The y coordinate is overlap
+				bReturn=true;
+			}
+		}
+		return bReturn;
+	}
 }
