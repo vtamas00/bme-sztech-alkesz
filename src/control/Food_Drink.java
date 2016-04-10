@@ -3,6 +3,8 @@
  */
 package control;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Warnings;
+
 /**
  * @author Dani
  *
@@ -18,6 +20,10 @@ public class Food_Drink {
 	private Position myPos;
 	private Food_Drinks_Type myType;
 	private int mySpeed;
+	private int mySize;
+	private int myScore;
+	private int bloodAlcoholRatio;
+	private int spcial;
 	
 	/**
 	 * @return the myPos
@@ -128,6 +134,278 @@ public class Food_Drink {
 		} // switch
 		
 	}
+	/**
+	 * @return the bloodAlcoholRatio
+	 */
+	public int getBloodAlcoholRatio() {
+		return bloodAlcoholRatio;
+	}
+	/**
+	 * @param myType Type of the current object
+	 */
+	private void setBloodAlcoholRatio(Food_Drinks_Type  myType) {
+		switch(myType)
+		{
+			case ePartyTray:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eGlassOfBeer:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case ePintOfBeer:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eGlassOfVine:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eCoctail:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eSmallSpirit:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eLongSpirit:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eHFullofSunfSeed:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eHFullofPeanuts:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eFattyBoard:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eSliceofPizza:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eGyros:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			case eHamburger:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+			default:
+			{
+				this.bloodAlcoholRatio = 1;
+				break;
+			}
+		} // switch
+	}
+	/**
+	 * @return the mySize
+	 */
+	public int getMySize() {
+		return mySize;
+	}
+	/**
+	 * @param myType is the type of the current object
+	 */
+	private void setMySize(Food_Drinks_Type  myType) {
+		switch(myType)
+		{
+			case ePartyTray:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eGlassOfBeer:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case ePintOfBeer:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eGlassOfVine:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eCoctail:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eSmallSpirit:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eLongSpirit:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eHFullofSunfSeed:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eHFullofPeanuts:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eFattyBoard:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eSliceofPizza:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eGyros:
+			{
+				this.mySize = 1;
+				break;
+			}
+			case eHamburger:
+			{
+				this.mySize = 1;
+				break;
+			}
+			default:
+			{
+				this.mySize = 1;
+				break;
+			}
+		} // switch
+	}
+	/**
+	 * @return the myScore
+	 */
+	public int getMyScore() {
+		return myScore;
+	}
+	/**
+	 * @param myType is the type of the current object
+	 */
+	private void setMyScore(Food_Drinks_Type  myType) {
+		switch(myType)
+		{
+			case ePartyTray:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eGlassOfBeer:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case ePintOfBeer:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eGlassOfVine:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eCoctail:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eSmallSpirit:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eLongSpirit:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eHFullofSunfSeed:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eHFullofPeanuts:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eFattyBoard:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eSliceofPizza:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eGyros:
+			{
+				this.myScore = 1;
+				break;
+			}
+			case eHamburger:
+			{
+				this.myScore = 1;
+				break;
+			}
+			default:
+			{
+				this.myScore = 1;
+				break;
+			}
+		} // switch
+	}
+	/**
+	 * @return the spcial
+	 */
+	public int getSpcial() {
+		return spcial;
+	}
+	/**
+	 * @param myType is the type of the current objectum
+	 */
+	private void setSpcial(Food_Drinks_Type  myType) {
+		if(Food_Drinks_Type.ePartyTray == myType)
+		{
+			this.spcial = 3;
+		}
+		else
+		{
+			this.spcial = 0;
+		}
+		
+	}
 	
 	/**
 	 * Default constructor
@@ -137,6 +415,11 @@ public class Food_Drink {
 		this.myPos = new Position();
 		this.myType = Food_Drinks_Type.ePartyTray;
 		setMySpeed(this.myType);
+		setBloodAlcoholRatio(this.myType);
+		setMySize(this.myType);
+		setMyScore(this.myType);
+		setSpcial(this.myType);
+		
 	}
 	
 	/**
@@ -150,6 +433,10 @@ public class Food_Drink {
 		this.myPos = new Position(x0, y0);
 		this.myType = myType;
 		setMySpeed(this.myType);
+		setBloodAlcoholRatio(this.myType);
+		setMySize(this.myType);
+		setMyScore(this.myType);
+		setSpcial(this.myType);
 	}
 	/**
 	 * 
@@ -161,14 +448,21 @@ public class Food_Drink {
 		this.myPos = myPos;
 		this.myType = myType;
 		setMySpeed(this.myType);
+		setBloodAlcoholRatio(this.myType);
+		setMySize(this.myType);
+		setMyScore(this.myType);
+		setSpcial(this.myType);
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Food_Drink [myPos=" + myPos + ", myType=" + myType + ", mySpeed=" + mySpeed + "]";
+		return "Food_Drink [myPos=" + myPos + ", myType=" + myType + ", mySpeed=" + mySpeed + ", mySize=" + mySize
+				+ ", myScore=" + myScore + ", bloodAlcoholRatio=" + bloodAlcoholRatio + ", spcial=" + spcial + "]";
 	}
+	
+	
 	
 	
 }
