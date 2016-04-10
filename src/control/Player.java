@@ -48,7 +48,7 @@ public class Player {
 		setMyLastPos(this.myPos); /* Set the current pos to last pos */
 		this.myPos = NewPos;
 
-		this.myPos.x+=(int)( this.myBloodAlcoholRatio*Math.sqrt(Math.pow(dx0,2)+Math.pow(dx1,2)));
+		this.myPos.x+=(int)(this.myBloodAlcoholRatio*Math.sqrt(Math.pow(dx0,2)+Math.pow(dx1,2)));
 	}
 	/**
 	 * @return the myBloodAlcoholRatio
@@ -89,6 +89,17 @@ public class Player {
 	}
 	/************************* Constructors ***********************************/
 	
+	public Player() {
+		this.myLastPos = new Position();
+		this.myPos = new Position();
+		this.myScore = 0;
+		this.myBloodAlcoholRatio = 0;
+		setMyLastPos(new Position());
+		setMyPos(new Position());
+		setMyHealh( );
+	}
+	
+	
 	public Player(Position newPos) {
 		this.myLastPos = newPos;
 		this.myPos = newPos;
@@ -111,5 +122,15 @@ public class Player {
 			// You are dead!
 		}
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Player [myLastPos=" + myLastPos + ", myPos=" + myPos + ", myBloodAlcoholRatio=" + myBloodAlcoholRatio
+				+ ", myScore=" + myScore + ", myHealh=" + myHealh + "]";
+	}
+
 
 }

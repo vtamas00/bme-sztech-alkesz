@@ -52,12 +52,13 @@ public class Control {
 		{
 			myString += "[FallingObjects("+i+")=" + FallingObjects.get(i) + "]\n";
 		}
+		myString += Plato.toString();
 		return myString;
 	} 
 	/*********************** Constructors *************************************/
 	
 	public Control() {
-		setPlato(new Player(new Position()));
+		setPlato(new Player( ));
 		this.FallingObjects = new ArrayList<Food_Drink>();
 	}
 	
@@ -71,7 +72,6 @@ public class Control {
 	 * @param elapsedTime
 	 */
 	public void ActualizeData(int newPosX ,int elapsedTime) {
-		Position Dummy = new Position();
 		// Calc the new pos of the Player
 		Plato.setMyPos(new Position(newPosX, 0));
 		// Determine the New pos of the Falling objects.
@@ -79,35 +79,39 @@ public class Control {
 		{
 			FallingObjects.get(i).CalcNewPos(elapsedTime);
 			
-			if(true == Dummy.isPosAequalsPosB(FallingObjects.get(i).getMyPos(), Plato.getMyPos(), Plato.getMyBloodAlcoholRatio(), FallingObjects.get(i).getMySize()) )
+			if(true == FallingObjects.get(i).getMyPos().isPosAequalsPosB(FallingObjects.get(i).getMyPos(), Plato.getMyPos(), Plato.getMyBloodAlcoholRatio(), FallingObjects.get(i).getMySize()) )
 			{
 				// Plato and falling object pos is equal....
-				// modify plato data
-				// delete object
 				Plato.setMyScore(FallingObjects.get(i).getMyScore());
 				Plato.setMyBloodAlcoholRatio(FallingObjects.get(i).getBloodAlcoholRatio());
+				FallingObjects.remove(i);
 			}
-			
-			if( 0 > FallingObjects.get(i).getMyPos().y )
+			else
 			{
-				Plato.decreaseHealth();
-				FallingObjects.remove(i); // remove object
+				if( 0 > FallingObjects.get(i).getMyPos().y )
+				{
+					Plato.decreaseHealth();
+					FallingObjects.remove(i); // remove object
+				}
 			}
 			
 		}
 	}
 
 	public void TestInit( ) {
-		Position Pos = new Position(3, 2);
 		Food_Drink myFD = new Food_Drink(3, 5, Food_Drinks_Type.ePartyTray);
 		Control myControl = new Control();
-		System.out.println(Pos.toString());
 		System.out.println(myFD.toString());
 		myControl.addFallingObjects(myFD);
 		myControl.addFallingObjects(new Food_Drink(10, 3, Food_Drinks_Type.eHamburger));
 		myControl.addFallingObjects(new Food_Drink(14, 4, Food_Drinks_Type.eLongSpirit));
 		myControl.addFallingObjects(new Food_Drink(17, 5, Food_Drinks_Type.ePintOfBeer));
 		
+		System.out.println(myControl.toString());
+		
+		myControl.ActualizeData(10,5);
+		System.out.println(myControl.toString());
+		myControl.ActualizeData(10,10);
 		System.out.println(myControl.toString());
 	}
 
