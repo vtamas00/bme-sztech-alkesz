@@ -13,7 +13,7 @@ import gui.Gui;
 public class Main {
 
 	/**
-	 * @param args
+	 * @param args Command line argument to the program
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

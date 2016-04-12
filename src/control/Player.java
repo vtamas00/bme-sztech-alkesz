@@ -5,11 +5,10 @@ package control;
 
 
 /**
- * @author Dani
- * 
  * The player represents the object, which has to catch the different falling 
- * object. This object is controlled by the human player. 
- *
+ * object. This object is controlled by the human player.
+ *  
+ * @author Dani
  */
 public class Player {
 	
@@ -32,7 +31,7 @@ public class Player {
 		return myPos;
 	}
 	/**
-	 * @param myPos is set based on derivation of the movement of the 
+	 * @param NewPos is set based on derivation of the movement of the 
 	 * player, and the players own blood alcohol ratio.
 	 * 
 	 * The used method is based on the following equation:

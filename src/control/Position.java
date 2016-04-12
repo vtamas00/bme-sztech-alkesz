@@ -4,6 +4,9 @@
 package control;
 
 /**
+ * This class represents a normal position of an object in X,Y coordinate 
+ * system. The position will indicates the geometric center of the object.
+ * 
  * @author Dani
  *
  */

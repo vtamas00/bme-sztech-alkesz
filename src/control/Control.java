@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import control.Food_Drink.Food_Drinks_Type;
 
 /**
+ * This class contains the main logic of the game.    
+ * 
  * @author Dani
  *
  */
@@ -17,6 +19,9 @@ public class Control {
 
 	/*********************** Constructors *************************************/
 
+	/**
+	 * Default constructor of the Control class.
+	 */
 	public Control() {
 		setPlato(new Player());
 		this.FallingObjects = new ArrayList<Food_Drink>();
@@ -28,7 +33,10 @@ public class Control {
 	 * it in every time stamp.
 	 *
 	 * @param newPosX
+	 *            New position of the player
 	 * @param elapsedTime
+	 *            Elapsed time since the last call - Sampling Time if it is a
+	 *            constant variable.
 	 */
 	public void ActualizeData(final int newPosX, final int elapsedTime) {
 		// Calc the new pos of the Player
@@ -37,8 +45,7 @@ public class Control {
 		for (int i = 0; i < FallingObjects.size(); i++) {
 			FallingObjects.get(i).CalcNewPos(elapsedTime);
 
-			if (true == FallingObjects.get(i).getMyPos().isPosAequalsPosB(FallingObjects.get(i).getMyPos(),
-					Plato.getMyPos(), Plato.getMyBloodAlcoholRatio(), FallingObjects.get(i).getMySize())) {
+			if (true == FallingObjects.get(i).getMyPos().isPosAequalsPosB(FallingObjects.get(i).getMyPos(), Plato.getMyPos(), Plato.getMyBloodAlcoholRatio(), FallingObjects.get(i).getMySize())) {
 				// Plato and falling object pos is equal....
 				Plato.setMyScore(FallingObjects.get(i).getMyScore());
 				Plato.setMyBloodAlcoholRatio(FallingObjects.get(i).getBloodAlcoholRatio());
@@ -91,6 +98,9 @@ public class Control {
 		Plato = plato;
 	}
 
+	/**
+	 * Simple test function is to try the main methods of the class.
+	 */
 	public void TestInit() {
 		Food_Drink myFD = new Food_Drink(3, 5, Food_Drinks_Type.ePartyTray);
 		Control myControl = new Control();

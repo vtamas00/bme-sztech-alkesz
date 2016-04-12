@@ -5,6 +5,8 @@ package control;
 
 
 /**
+ * This class contains the handles the different objects of the game.
+ * 
  * @author Dani
  *
  */
@@ -392,7 +394,7 @@ public class Food_Drink {
 		return special;
 	}
 	/**
-	 * @param myType is the type of the current objectum
+	 * @param myType is the type of the current object
 	 */
 	private void setSpcial(Food_Drinks_Type  myType) {
 		if(Food_Drinks_Type.ePartyTray == myType)
@@ -465,7 +467,9 @@ public class Food_Drink {
 				+ ", myScore=" + myScore + ", bloodAlcoholRatio=" + bloodAlcoholRatio + ", spcial=" + special + "]";
 	}
 	/**
-	 * 
+	 * Calculate the new position of the object depended on its speed and 
+	 * the elapsed time parameter.
+	 *
 	 * @param elapsedTime the dynamic time stamp to calculate object position 
 	 */
 	public void CalcNewPos( int elapsedTime ) {
