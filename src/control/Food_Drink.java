@@ -3,6 +3,7 @@
  */
 package control;
 
+import java.util.Random;
 
 /**
  * This class contains the handles the different objects of the game.
@@ -430,7 +431,7 @@ public class Food_Drink {
 	 * @param y0 is the first y coordinate
 	 * @param myType is the type of the object
 	 */
-	public Food_Drink( int x0, int y0, Food_Drinks_Type myType)
+	public Food_Drink( double x0, double y0, Food_Drinks_Type myType)
 	{
 		this.myPos = new Position(x0, y0);
 		this.myType = myType;
@@ -475,6 +476,24 @@ public class Food_Drink {
 	public void CalcNewPos( int elapsedTime ) {
 		double newY = myPos.y+this.mySpeed*elapsedTime;
 		myPos.y=newY; 
+	}
+	
+	/**
+	 * This function generates the new type of an object. We use a gaussian pszeudo 
+	 * random number to determine the type of the object. The low value objects are closer to the
+	 * mean value and the higher value objects are far from the mean value.
+	 * 
+	 * @return
+	 */
+	public Food_Drinks_Type RandomType( )
+	{
+		Random rand = new Random();
+		
+		double seed = Math.abs(rand.nextGaussian());
+		// U have to use some intervvals to determine the different objects
+		
+		Food_Drinks_Type newType = Food_Drinks_Type.ePartyTray;
+		return newType;
 	}
 	
 	

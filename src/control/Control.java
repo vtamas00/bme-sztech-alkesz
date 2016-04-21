@@ -4,6 +4,7 @@
 package control;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import control.Food_Drink.Food_Drinks_Type;
 
@@ -16,7 +17,37 @@ import control.Food_Drink.Food_Drinks_Type;
 public class Control {
 	private ArrayList<Food_Drink> FallingObjects; /* List for the objects */
 	private Player Plato; /* The player who has to catch the objects */
+	
+	/**
+	 * @param fallingObjects
+	 *            the fallingObjects to set
+	 */
+	public void addFallingObjects(final Food_Drink fallingObjects) {
+		FallingObjects.add(fallingObjects);
+	}
 
+	/**
+	 * @return the fallingObjects
+	 */
+	public ArrayList<Food_Drink> getFallingObjects() {
+		return FallingObjects;
+	}
+
+	/**
+	 * @return the plato
+	 */
+	public Player getPlato() {
+		return Plato;
+	}
+
+	/**
+	 * @param plato
+	 *            the plato to set
+	 */
+	private void setPlato(final Player plato) {
+		Plato = plato;
+	}
+	
 	/*********************** Constructors *************************************/
 
 	/**
@@ -28,6 +59,7 @@ public class Control {
 	}
 
 	/************************* General methods ********************************/
+	
 	/**
 	 * ActualizeData function is recalculate every dynamic variable. Has to call
 	 * it in every time stamp.
@@ -69,36 +101,6 @@ public class Control {
 	}
 
 	/**
-	 * @param fallingObjects
-	 *            the fallingObjects to set
-	 */
-	public void addFallingObjects(final Food_Drink fallingObjects) {
-		FallingObjects.add(fallingObjects);
-	}
-
-	/**
-	 * @return the fallingObjects
-	 */
-	public ArrayList<Food_Drink> getFallingObjects() {
-		return FallingObjects;
-	}
-
-	/**
-	 * @return the plato
-	 */
-	public Player getPlato() {
-		return Plato;
-	}
-
-	/**
-	 * @param plato
-	 *            the plato to set
-	 */
-	private void setPlato(final Player plato) {
-		Plato = plato;
-	}
-
-	/**
 	 * Simple test function is to try the main methods of the class.
 	 */
 	public void TestInit() {
@@ -131,6 +133,29 @@ public class Control {
 		}
 		myString += Plato.toString();
 		return myString;
+	}
+	
+	/**
+	 * This function will generate one new falling object with random parameters.
+	 */
+	public void GenerateObjectsRandom( )
+	{
+		Random rand = new Random();
+		
+		double newPosX = rand.nextDouble() * Position.screenWidth +1;
+		Food_Drink newItem = new Food_Drink(newPosX, Position.screenHeight, new Food_Drink().RandomType());
+		this.addFallingObjects(newItem);
+	}
+	
+	/**
+	 * This function generates an object with the given parameters.
+	 * 
+	 * @param objectPos position of the new object
+	 */
+	public void GenerateObject( Position objectPos )
+	{
+		Food_Drink newItem = new Food_Drink(objectPos.x, Position.screenHeight, new Food_Drink().RandomType());
+		this.addFallingObjects(newItem);
 	}
 
 }
