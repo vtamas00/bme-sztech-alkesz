@@ -104,13 +104,15 @@ public class Control {
 	 * Simple test function is to try the main methods of the class.
 	 */
 	public void TestInit() {
-		Food_Drink myFD = new Food_Drink(3, 5, Food_Drinks_Type.ePartyTray);
 		Control myControl = new Control();
-		System.out.println(myFD.toString());
-		myControl.addFallingObjects(myFD);
-		myControl.addFallingObjects(new Food_Drink(10, 3, Food_Drinks_Type.eHamburger));
-		myControl.addFallingObjects(new Food_Drink(14, 4, Food_Drinks_Type.eLongSpirit));
-		myControl.addFallingObjects(new Food_Drink(17, 5, Food_Drinks_Type.ePintOfBeer));
+
+		
+		myControl.GenerateObjectsRandom();
+		myControl.GenerateObjectsRandom();
+		myControl.GenerateObjectsRandom();
+		myControl.GenerateObjectsRandom();
+		myControl.GenerateObjectsRandom();
+
 
 		System.out.println(myControl.toString());
 

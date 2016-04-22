@@ -488,11 +488,49 @@ public class Food_Drink {
 	public Food_Drinks_Type RandomType( )
 	{
 		Random rand = new Random();
+		Food_Drinks_Type newType;
 		
 		double seed = Math.abs(rand.nextGaussian());
+		if(seed >0.5)
+		{
+			// Generate some alkohol
+			if(seed >= 0.9)
+				newType = Food_Drinks_Type.eGlassOfBeer;
+			else if(seed < 0.9 && seed >= 0.8)
+				newType = Food_Drinks_Type.ePintOfBeer;
+			else if(seed < 0.8 && seed >= 0.7)
+				newType = Food_Drinks_Type.eGlassOfVine;
+			else if(seed < 0.7 && seed >= 0.65)
+				newType = Food_Drinks_Type.eCoctail;
+			else if(seed < 0.5 && seed >= 0.35)
+				newType = Food_Drinks_Type.eSmallSpirit;
+			else if(seed < 0.35 && seed >= 0.2)
+				newType = Food_Drinks_Type.eLongSpirit;
+			else
+				newType = Food_Drinks_Type.ePartyTray;
+		}
+		else
+		{
+			// Generate some food
+			if(seed >= 0.9)
+				newType = Food_Drinks_Type.eHFullofSunfSeed;
+			else if(seed < 0.9 && seed >= 0.8)
+				newType = Food_Drinks_Type.eHFullofPeanuts;
+			else if(seed < 0.8 && seed >= 0.7)
+				newType = Food_Drinks_Type.eSliceofPizza;
+			else if(seed < 0.7 && seed >= 0.65)
+				newType = Food_Drinks_Type.eFattyBoard;
+			else if(seed < 0.5 && seed >= 0.35)
+				newType = Food_Drinks_Type.eGyros;
+			else if(seed < 0.35 && seed >= 0.2)
+				newType = Food_Drinks_Type.eHamburger;
+			else
+				newType = Food_Drinks_Type.ePartyTray;
+		}
+		
 		// U have to use some intervvals to determine the different objects
 		
-		Food_Drinks_Type newType = Food_Drinks_Type.ePartyTray;
+		
 		return newType;
 	}
 	
