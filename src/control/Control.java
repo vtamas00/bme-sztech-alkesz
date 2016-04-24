@@ -4,6 +4,7 @@
 package control;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 import control.Food_Drink.Food_Drinks_Type;
@@ -74,26 +75,25 @@ public class Control {
 		// Calc the new pos of the Player
 		Plato.setMyPos(new Position(newPosX, 0));
 		// Determine the New pos of the Falling objects.
-		for (int i = 0; i < FallingObjects.size(); i++) {
-			FallingObjects.get(i).CalcNewPos(elapsedTime);
-
-			if (true == FallingObjects.get(i).getMyPos().isPosAequalsPosB(FallingObjects.get(i).getMyPos(), Plato.getMyPos(), Plato.getMyBloodAlcoholRatio(), FallingObjects.get(i).getMySize())) {
+		Iterator iteral = FallingObjects.iterator();
+		while(iteral.hasNext()) {
+			Food_Drink CurrObj = (Food_Drink) iteral.next();
+			CurrObj.CalcNewPos(elapsedTime);
+			
+			// Compare the i.th object and the player position 
+			if (true == CurrObj.getMyPos().isPosAequalsPosB(CurrObj.getMyPos(), Plato.getMyPos(), Plato.getMyBloodAlcoholRatio(), CurrObj.getMySize())) {
 				// Plato and falling object pos is equal....
-				Plato.setMyScore(FallingObjects.get(i).getMyScore());
-				Plato.setMyBloodAlcoholRatio(FallingObjects.get(i).getBloodAlcoholRatio());
-
-				// FIXME if we delete here and continue the iteration, we will
-				// jump over one element, or if
-				// this is the element before the last one, there will be an
-				// IndexOutOfBoundException. An
-				// Iterator should be used: list.iterator();
-				// for(iterator.hasNext()) {Element e =
-				// iterator.next(); ... iterator.remove()}
-				FallingObjects.remove(i);
+				Plato.setMyScore(CurrObj.getMyScore());
+				Plato.setMyBloodAlcoholRatio(CurrObj.getBloodAlcoholRatio());
+				System.out.println("\n\n The object was catched by the player:\n" + CurrObj.toString());
+				
+				iteral.remove();
 			} else {
-				if (0 > FallingObjects.get(i).getMyPos().y) {
+				// See if object is missed
+				if (0 > CurrObj.getMyPos().y) {
 					Plato.decreaseHealth();
-					FallingObjects.remove(i); // remove object
+					System.out.println("\n\n The object reached the zero point! :\n" + CurrObj.toString());
+					iteral.remove(); // remove object
 				}
 			}
 
@@ -107,12 +107,10 @@ public class Control {
 		Control myControl = new Control();
 
 		
-		myControl.GenerateObjectsRandom();
-		myControl.GenerateObjectsRandom();
-		myControl.GenerateObjectsRandom();
-		myControl.GenerateObjectsRandom();
-		myControl.GenerateObjectsRandom();
-
+		for(int i=1;i<30;i++)
+		{
+			myControl.GenerateObjectsRandom();
+		}
 
 		System.out.println(myControl.toString());
 

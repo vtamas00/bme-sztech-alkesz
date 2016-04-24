@@ -65,7 +65,7 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 15;
 				break;
 			}
 			case eGlassOfBeer:
@@ -75,27 +75,27 @@ public class Food_Drink {
 			}
 			case ePintOfBeer:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 3;
 				break;
 			}
 			case eGlassOfVine:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 5;
 				break;
 			}
 			case eCoctail:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 7;
 				break;
 			}
 			case eSmallSpirit:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 9;
 				break;
 			}
 			case eLongSpirit:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 10;
 				break;
 			}
 			case eHFullofSunfSeed:
@@ -105,27 +105,27 @@ public class Food_Drink {
 			}
 			case eHFullofPeanuts:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 3;
 				break;
 			}
 			case eFattyBoard:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 5;
 				break;
 			}
 			case eSliceofPizza:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 7;
 				break;
 			}
 			case eGyros:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 9;
 				break;
 			}
 			case eHamburger:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 10;
 				break;
 			}
 			default:
@@ -134,6 +134,7 @@ public class Food_Drink {
 				break;
 			}
 		} // switch
+		this.mySpeed = (-1)* this.mySpeed;
 		
 	}
 	/**
@@ -150,7 +151,7 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = 0;
 				break;
 			}
 			case eGlassOfBeer:
@@ -160,62 +161,62 @@ public class Food_Drink {
 			}
 			case ePintOfBeer:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = 2;
 				break;
 			}
 			case eGlassOfVine:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = 4;
 				break;
 			}
 			case eCoctail:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = 8;
 				break;
 			}
 			case eSmallSpirit:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = 12;
 				break;
 			}
 			case eLongSpirit:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = 20;
 				break;
 			}
 			case eHFullofSunfSeed:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = -1;
 				break;
 			}
 			case eHFullofPeanuts:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = -2;
 				break;
 			}
 			case eFattyBoard:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = -4;
 				break;
 			}
 			case eSliceofPizza:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = -5;
 				break;
 			}
 			case eGyros:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = -8;
 				break;
 			}
 			case eHamburger:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = -12;
 				break;
 			}
 			default:
 			{
-				this.bloodAlcoholRatio = 1;
+				this.bloodAlcoholRatio = 0;
 				break;
 			}
 		} // switch
@@ -239,67 +240,67 @@ public class Food_Drink {
 			}
 			case eGlassOfBeer:
 			{
-				this.mySize = 1;
+				this.mySize = 20;
 				break;
 			}
 			case ePintOfBeer:
 			{
-				this.mySize = 1;
+				this.mySize = 18;
 				break;
 			}
 			case eGlassOfVine:
 			{
-				this.mySize = 1;
+				this.mySize = 15;
 				break;
 			}
 			case eCoctail:
 			{
-				this.mySize = 1;
+				this.mySize = 10;
 				break;
 			}
 			case eSmallSpirit:
 			{
-				this.mySize = 1;
+				this.mySize = 5;
 				break;
 			}
 			case eLongSpirit:
 			{
-				this.mySize = 1;
+				this.mySize = 3;
 				break;
 			}
 			case eHFullofSunfSeed:
 			{
-				this.mySize = 1;
+				this.mySize = 20;
 				break;
 			}
 			case eHFullofPeanuts:
 			{
-				this.mySize = 1;
+				this.mySize = 15;
 				break;
 			}
 			case eFattyBoard:
 			{
-				this.mySize = 1;
+				this.mySize = 13;
 				break;
 			}
 			case eSliceofPizza:
 			{
-				this.mySize = 1;
+				this.mySize = 10;
 				break;
 			}
 			case eGyros:
 			{
-				this.mySize = 1;
+				this.mySize = 5;
 				break;
 			}
 			case eHamburger:
 			{
-				this.mySize = 1;
+				this.mySize = 3;
 				break;
 			}
 			default:
 			{
-				this.mySize = 1;
+				this.mySize = 0;
 				break;
 			}
 		} // switch
@@ -318,72 +319,72 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.myScore = 1;
+				this.myScore = 1000;
 				break;
 			}
 			case eGlassOfBeer:
 			{
-				this.myScore = 1;
+				this.myScore = 30;
 				break;
 			}
 			case ePintOfBeer:
 			{
-				this.myScore = 1;
+				this.myScore = 50;
 				break;
 			}
 			case eGlassOfVine:
 			{
-				this.myScore = 1;
+				this.myScore = 100;
 				break;
 			}
 			case eCoctail:
 			{
-				this.myScore = 1;
+				this.myScore = 200;
 				break;
 			}
 			case eSmallSpirit:
 			{
-				this.myScore = 1;
+				this.myScore = 300;
 				break;
 			}
 			case eLongSpirit:
 			{
-				this.myScore = 1;
+				this.myScore = 500;
 				break;
 			}
 			case eHFullofSunfSeed:
 			{
-				this.myScore = 1;
+				this.myScore = 10;
 				break;
 			}
 			case eHFullofPeanuts:
 			{
-				this.myScore = 1;
+				this.myScore = 30;
 				break;
 			}
 			case eFattyBoard:
 			{
-				this.myScore = 1;
+				this.myScore = 50;
 				break;
 			}
 			case eSliceofPizza:
 			{
-				this.myScore = 1;
+				this.myScore = 100;
 				break;
 			}
 			case eGyros:
 			{
-				this.myScore = 1;
+				this.myScore = 200;
 				break;
 			}
 			case eHamburger:
 			{
-				this.myScore = 1;
+				this.myScore = 300;
 				break;
 			}
 			default:
 			{
-				this.myScore = 1;
+				this.myScore = 0;
 				break;
 			}
 		} // switch
@@ -488,44 +489,51 @@ public class Food_Drink {
 	public Food_Drinks_Type RandomType( )
 	{
 		Random rand = new Random();
-		Food_Drinks_Type newType;
+		Food_Drinks_Type newType = Food_Drinks_Type.eGlassOfBeer;
 		
-		double seed = Math.abs(rand.nextGaussian());
-		if(seed >0.5)
+		double seed = rand.nextGaussian();
+		double seed_abs = Math.abs(seed); 
+		System.out.println("seed:" + seed + ",SeedAbs: "+ seed_abs);
+		
+		
+		if(seed >0)
 		{
+			seed = Math.abs(seed);
 			// Generate some alkohol
-			if(seed >= 0.9)
+			if(seed < 0.2)
 				newType = Food_Drinks_Type.eGlassOfBeer;
-			else if(seed < 0.9 && seed >= 0.8)
+			else if(seed >=0.2 && seed < 0.35)
 				newType = Food_Drinks_Type.ePintOfBeer;
-			else if(seed < 0.8 && seed >= 0.7)
+			else if(seed >= 0.35 && seed < 0.5 )
 				newType = Food_Drinks_Type.eGlassOfVine;
-			else if(seed < 0.7 && seed >= 0.65)
+			else if(seed >= 0.5 && seed < 0.75)
 				newType = Food_Drinks_Type.eCoctail;
-			else if(seed < 0.5 && seed >= 0.35)
+			else if(seed >= 0.75 && seed < 1.2)
 				newType = Food_Drinks_Type.eSmallSpirit;
-			else if(seed < 0.35 && seed >= 0.2)
+			else if(seed >= 1.2 && seed < 2)
 				newType = Food_Drinks_Type.eLongSpirit;
-			else
+			else if( seed >= 2 )
 				newType = Food_Drinks_Type.ePartyTray;
 		}
 		else
 		{
+			seed = Math.abs(seed);
 			// Generate some food
-			if(seed >= 0.9)
+			if(seed < 0.2)
 				newType = Food_Drinks_Type.eHFullofSunfSeed;
-			else if(seed < 0.9 && seed >= 0.8)
+			else if(seed >=0.2 && seed < 0.35)
 				newType = Food_Drinks_Type.eHFullofPeanuts;
-			else if(seed < 0.8 && seed >= 0.7)
+			else if(seed >= 0.35 && seed < 0.5 )
 				newType = Food_Drinks_Type.eSliceofPizza;
-			else if(seed < 0.7 && seed >= 0.65)
+			else if(seed >= 0.5 && seed < 0.75)
 				newType = Food_Drinks_Type.eFattyBoard;
-			else if(seed < 0.5 && seed >= 0.35)
+			else if(seed >= 0.75 && seed < 1.2)
 				newType = Food_Drinks_Type.eGyros;
-			else if(seed < 0.35 && seed >= 0.2)
+			else if(seed >= 1.2 && seed < 2)
 				newType = Food_Drinks_Type.eHamburger;
-			else
+			else if( seed >= 2 )
 				newType = Food_Drinks_Type.ePartyTray;
+
 		}
 		
 		// U have to use some intervvals to determine the different objects
