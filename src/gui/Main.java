@@ -4,6 +4,7 @@
 package gui;
 
 import control.Control;
+import control.GameState.Game_Type;
 import gui.Gui; 
 
 /**
@@ -19,7 +20,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		System.out.println("Hello MIT!");
 
-		Control myControl = new Control();
+		Control myControl = new Control("Test",Game_Type.eSinglePlayer);
 		Gui myGui = new Gui();
 		
 		myControl.TestInit();
