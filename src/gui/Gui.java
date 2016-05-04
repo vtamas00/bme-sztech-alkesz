@@ -94,6 +94,7 @@ public class Gui extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainLayout.show(ContainerPanel, "SGP");
+				g.eGameType = Game_Type.eSinglePlayer;
 			}
 		});
 		
@@ -112,7 +113,8 @@ public class Gui extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SingleGamePanel.printGameState(g);
+				SingleGamePanel.setShowGS(true);
+				SingleGamePanel.setGameState(g);
 				SingleGamePanel.repaint();
 			}
 		});
