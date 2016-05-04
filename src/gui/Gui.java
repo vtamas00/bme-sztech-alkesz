@@ -32,17 +32,18 @@ public class Gui extends JFrame {
 	
 	JButton sw2 = new JButton("Go back to main menu");
 	JButton sw3 = new JButton("Go back to main menu");
+	JButton sw4 = new JButton("Print GameState");
 
 	JPanel ContainerPanel = new JPanel();
 	JPanel MainMenuPanel = new JPanel();
-	JPanel SingleGamePanel = new JPanel();
+	GameSpacePanel SingleGamePanel = new GameSpacePanel();
 	JPanel MultiGamePanel = new JPanel();
 	
 	private GameState g;
 
 	public Gui(GameState gameState) {
 		
-		g = gameState;
+		this.g = gameState;
 	
 		
 		//setSize(400, 550);
@@ -96,6 +97,8 @@ public class Gui extends JFrame {
 			}
 		});
 		
+		SingleGamePanel.add(sw4);
+		
 		sw2.addActionListener(new ActionListener() {
 			
 			@Override
@@ -105,10 +108,21 @@ public class Gui extends JFrame {
 			}
 		});
 		
+		sw4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SingleGamePanel.printGameState(g);
+				SingleGamePanel.repaint();
+			}
+		});
+		
 		add(ContainerPanel);
 		setLayout(MainLayout);
 		pack();
 		setVisible(true);
+		
+		
 	}
 	
 	void ReDrawAll() { /* This function is scheduled to run every 20 milliseconds. */

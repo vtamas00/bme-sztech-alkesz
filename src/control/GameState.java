@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GameState {
 	public enum Game_Type{
-		eSinglePlayer, eMultiPlayer, eDeveloper
+		eSinglePlayer, eMultiPlayer, eMenu, eDeveloper
 	}
 	public enum Game_Control_Events{
 		eMouseMovement, eMouceClick
@@ -24,6 +24,12 @@ public class GameState {
 	public Game_Type eGameType;	/* Gma type of the current game */
 	public Game_Control_Events eEvents;	/* Every event that changes the course of the game */
 	
+	
+	public GameState () {
+		this.eGameType = Game_Type.eMenu;
+		this.Plato = new Player( "Unknown username" );
+		this.FallingObjects = new ArrayList<Food_Drink>();
+	}
 	
 	public GameState( String myName, Game_Type eGameType )
 	{
