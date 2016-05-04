@@ -20,6 +20,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		System.out.println("Hello EMÁJTÍ!");
 		GameState = new GameState();
 		
 		Gui	myGui = new Gui(GameState);
@@ -29,7 +30,10 @@ public class Main {
 		
 		
 		// Where you can now call the Control and Gui run methods.!
-//		gT.run();
+//		
+		
+		gT.run();
+		System.out.println("Good By EMÁJTÍ!");
 		
 	}
 }

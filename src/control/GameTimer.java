@@ -32,6 +32,7 @@ public class GameTimer implements Runnable{
 			while(isRunning==true)
 			{
 				// Here comes the control actualize function
+				isRunning=C.Tssshhh();
 				Thread.sleep(20);
 			}
 		}

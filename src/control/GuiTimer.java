@@ -25,6 +25,7 @@ public class GuiTimer implements Runnable {
 			while(isRunning==true)
 			{
 				// Here comes the control actualize function
+				
 				Thread.sleep(20);
 			}
 		}

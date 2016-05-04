@@ -21,6 +21,7 @@ public class Control{
 	
 	private GameState currGameState;
 	private boolean isEvent;
+	public long cntr=0;
 	
 	/*********************** Constructors *************************************/
 	
@@ -123,10 +124,16 @@ public class Control{
 		this.isEvent=true;
 	}
 	
-	public void Tssshhh()
+	public boolean Tssshhh()
 	{
+		boolean bReturn = true;;
+		cntr++;
 		System.out.println("Tssssshhhh!\t" + System.currentTimeMillis());
-		
+		if( cntr > 100 )
+		{
+			bReturn=false;
+		}
+		return bReturn;
 	}
 
 }
