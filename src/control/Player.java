@@ -17,6 +17,7 @@ public class Player {
 	private int myBloodAlcoholRatio;	
 	private int myScore;		
 	private int myHealh;		/* Maximum number of missed objects */
+	private String myName;
 	
 	/**
 	 * @param myLastPos the myLastPos to set
@@ -88,22 +89,24 @@ public class Player {
 	}
 	/************************* Constructors ***********************************/
 	
-	public Player() {
+	public Player( String myName) {
 		this.myLastPos = new Position();
 		this.myPos = new Position();
 		this.myScore = 0;
 		this.myBloodAlcoholRatio = 0;
+		this.myName = myName;
 		setMyLastPos(new Position());
 		setMyPos(new Position());
 		setMyHealh( );
 	}
 	
 	
-	public Player(Position newPos) {
+	public Player(Position newPos, String myName) {
 		this.myLastPos = newPos;
 		this.myPos = newPos;
 		this.myScore = 0;
 		this.myBloodAlcoholRatio = 0;
+		this.myName = myName;
 		setMyLastPos(newPos);
 		setMyPos(newPos);
 		setMyHealh( );
