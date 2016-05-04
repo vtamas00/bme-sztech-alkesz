@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import control.GameState;
+import control.GameState.Game_Type;
 
 public class Gui extends JFrame {
 
@@ -58,7 +59,7 @@ public class Gui extends JFrame {
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		bWelcome.setPreferredSize(gridSize);
-		bWelcome.setFont(new Font("Serif", Font.BOLD, 30));
+		bWelcome.setFont(new Font("Serif", Font.BOLD, 35));
 		bWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		MainMenuPanel.add( bWelcome, gbc );
 		gbc.gridy = 1;
@@ -91,7 +92,7 @@ public class Gui extends JFrame {
 		bSinglePlayer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainLayout.show(ContainerPanel, "SGP");		
+				MainLayout.show(ContainerPanel, "SGP");
 			}
 		});
 		
@@ -111,6 +112,9 @@ public class Gui extends JFrame {
 	}
 	
 	void ReDrawAll() { /* This function is scheduled to run every 20 milliseconds. */
+		if ( g.eGameType == Game_Type.eSinglePlayer ) { 
+			SingleGamePanel.repaint();
+		}
 	}
 	
 
