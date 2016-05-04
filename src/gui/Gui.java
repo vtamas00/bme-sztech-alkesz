@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import control.Control;
 import control.GameState;
 import control.GameState.Game_Type;
 
@@ -29,7 +30,7 @@ public class Gui extends JFrame {
 	JButton bMultiPlayer = new JButton("Multi Player");
 	JButton bSettings = new JButton("Settings");
 	JButton bStatistics = new JButton("Statistics");
-	
+
 	JButton sw2 = new JButton("Go back to main menu");
 	JButton sw3 = new JButton("Go back to main menu");
 	JButton sw4 = new JButton("Print GameState");
@@ -38,79 +39,79 @@ public class Gui extends JFrame {
 	JPanel MainMenuPanel = new JPanel();
 	GameSpacePanel SingleGamePanel = new GameSpacePanel();
 	JPanel MultiGamePanel = new JPanel();
-	
-	private GameState g;
 
-	public Gui(GameState gameState) {
-		
+	private GameState g;
+	private Control c;
+
+	public Gui(GameState gameState, Control control) {
+
 		this.g = gameState;
-	
-		
-		//setSize(400, 550);
+		this.c = control;
+
+		// setSize(400, 550);
 		setTitle("BME MIT Sztech :: Alkesz");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
-		
-		GridBagConstraints gbc = new GridBagConstraints(); 
+
+		GridBagConstraints gbc = new GridBagConstraints();
 		MainMenuPanel.setLayout(new GridBagLayout());
 
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.insets = new Insets(6, 6, 6, 6);
-		
+
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		bWelcome.setPreferredSize(gridSize);
 		bWelcome.setFont(new Font("Serif", Font.BOLD, 35));
 		bWelcome.setHorizontalAlignment(SwingConstants.CENTER);
-		MainMenuPanel.add( bWelcome, gbc );
+		MainMenuPanel.add(bWelcome, gbc);
 		gbc.gridy = 1;
 		bSinglePlayer.setPreferredSize(gridSize);
-		MainMenuPanel.add( bSinglePlayer, gbc );
+		MainMenuPanel.add(bSinglePlayer, gbc);
 		gbc.gridy = 2;
 		bMultiPlayer.setPreferredSize(gridSize);
-		MainMenuPanel.add( bMultiPlayer, gbc );
+		MainMenuPanel.add(bMultiPlayer, gbc);
 		gbc.gridy = 3;
 		bSettings.setPreferredSize(gridSize);
-		MainMenuPanel.add( bSettings, gbc );
+		MainMenuPanel.add(bSettings, gbc);
 		gbc.gridy = 4;
 		bStatistics.setPreferredSize(gridSize);
-		MainMenuPanel.add( bStatistics, gbc );
-		
-		
+		MainMenuPanel.add(bStatistics, gbc);
+
 		SingleGamePanel.add(sw2);
 		MultiGamePanel.add(sw3);
-		
-		
+
 		final CardLayout MainLayout = new CardLayout();
-		
+
 		ContainerPanel.setLayout(MainLayout);
-		ContainerPanel.add(MainMenuPanel,"MMP");
+		ContainerPanel.add(MainMenuPanel, "MMP");
 		ContainerPanel.add(SingleGamePanel, "SGP");
 		ContainerPanel.setPreferredSize(new Dimension(400, 550));
-		
+
 		MainLayout.show(ContainerPanel, "MMP");
-		
+
 		bSinglePlayer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainLayout.show(ContainerPanel, "SGP");
 				g.eGameType = Game_Type.eSinglePlayer;
+				c.StartGame();
 			}
 		});
-		
+
 		SingleGamePanel.add(sw4);
-		
+
 		sw2.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainLayout.show(ContainerPanel, "MMP");
-				
+
 			}
 		});
-		
+
 		sw4.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SingleGamePanel.setShowGS(true);
@@ -118,20 +119,21 @@ public class Gui extends JFrame {
 				SingleGamePanel.repaint();
 			}
 		});
-		
+
 		add(ContainerPanel);
 		setLayout(MainLayout);
 		pack();
 		setVisible(true);
-		
-		
+
 	}
-	
-	void ReDrawAll() { /* This function is scheduled to run every 20 milliseconds. */
-		if ( g.eGameType == Game_Type.eSinglePlayer ) { 
+
+	public void ReDrawAll() { /*
+								 * This function is scheduled to run every 20
+								 * milliseconds.
+								 */
+		if (g.eGameType == Game_Type.eSinglePlayer) {
 			SingleGamePanel.repaint();
 		}
 	}
-	
 
 }

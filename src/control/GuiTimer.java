@@ -24,7 +24,8 @@ public class GuiTimer implements Runnable {
 		try{
 			while(isRunning==true)
 			{
-				// Here comes the control actualize function
+				
+				this.g.ReDrawAll();
 				
 				Thread.sleep(20);
 			}
