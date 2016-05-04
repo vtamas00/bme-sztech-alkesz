@@ -20,7 +20,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		System.out.println("Hello EMÁJTÍ!");
+		System.out.println("Hello MIT");
 		GameState = new GameState();
 		
 		Gui	myGui = new Gui(GameState);
@@ -33,7 +33,7 @@ public class Main {
 //		
 		
 		gT.run();
-		System.out.println("Good By EMÁJTÍ!");
+		System.out.println("Good By MIT!");
 		
 	}
 }

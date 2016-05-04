@@ -29,10 +29,10 @@ public class GameTimer implements Runnable{
 	@Override
 	public void run() {
 		try{
-			while(isRunning==true)
+			while(true==isRunning)
 			{
 				// Here comes the control actualize function
-				isRunning=C.Tssshhh();
+				isRunning=C.RefreshData();
 				Thread.sleep(20);
 			}
 		}

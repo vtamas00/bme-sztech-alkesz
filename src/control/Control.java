@@ -21,7 +21,10 @@ public class Control{
 	
 	private GameState currGameState;
 	private boolean isEvent;
+	private boolean isGameRunning;
+	private long ObjGenCntr=0;
 	public long cntr=0;
+	
 	
 	/*********************** Constructors *************************************/
 	
@@ -31,6 +34,7 @@ public class Control{
 	public Control(GameState GameState) {
 		currGameState = GameState;
 		this.isEvent = false;
+		this.isGameRunning=false;
 	}
 
 	/************************* General methods ********************************/
@@ -98,11 +102,15 @@ public class Control{
 	 */
 	public void GenerateObjectsRandom( )
 	{
-		Random rand = new Random();
-		
-		double newPosX = rand.nextDouble() * Position.screenWidth +1;
-		Food_Drink newItem = new Food_Drink(newPosX, Position.screenHeight, new Food_Drink().RandomType());
-		this.currGameState.addFallingObjects(newItem);
+		ObjGenCntr++;
+		if( ObjGenCntr*currGameState.Plato.getMyBloodAlcoholRatio() > 50)
+		{
+			Random rand = new Random();
+			double newPosX = rand.nextDouble() * Position.screenWidth +1;
+			Food_Drink newItem = new Food_Drink(newPosX, Position.screenHeight, new Food_Drink().RandomType());
+			this.currGameState.addFallingObjects(newItem);
+			ObjGenCntr=0;
+		}
 	}
 	
 	/**
@@ -119,11 +127,39 @@ public class Control{
 	/**
 	 *	Indicates to the control class, that some changes was in the game field by the user. 
 	 */
-	public void RefreshData( )
+	public void HandleUserEvent( )
 	{
 		this.isEvent=true;
 	}
 	
+	/**
+	 * This function sets the flag of the control class that will start the actul game.
+	 */
+	public void StartGame( ){
+		this.isGameRunning=true;
+	}
+	
+	/**
+	 * This function pause the game, with the start function you can continue it.
+	 */
+	public void Pause(){
+		this.isGameRunning=false;
+	}
+	/**
+	 * Force kill the player, this function will and the game!
+	 */
+	public void ForceGameOver(){
+		for(int i=0;i<50;i++)
+		{
+			this.currGameState.Plato.getMyHealh();
+		}
+	}
+	
+	
+	/**
+	 * Just a sily teszt funciton
+	 * @return if the counter is higher then the threadhol value the funciton returns false
+	 */
 	public boolean Tssshhh()
 	{
 		boolean bReturn = true;;
@@ -132,6 +168,26 @@ public class Control{
 		if( cntr > 100 )
 		{
 			bReturn=false;
+		}
+		return bReturn;
+	}
+	
+	
+	/**
+	 * This method called by the timer class, and this makes the main process of the control class.
+	 * @return false, is the game is over.
+	 */
+	public boolean RefreshData()
+	{
+		boolean bReturn = true;
+		if( true == this.isGameRunning )
+		{
+			GenerateObjectsRandom();
+			ActualizeData(20);
+			if( 0>= currGameState.Plato.getMyHealh())
+			{
+				bReturn=false;
+			}
 		}
 		return bReturn;
 	}
