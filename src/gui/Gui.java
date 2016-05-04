@@ -37,9 +37,9 @@ public class Gui extends JFrame {
 	JPanel SingleGamePanel = new JPanel();
 	JPanel MultiGamePanel = new JPanel();
 	
-	private GameState g;	
+	private GameState g;
 
-	Gui(GameState gameState) {
+	public Gui(GameState gameState) {
 		
 		g = gameState;
 	
