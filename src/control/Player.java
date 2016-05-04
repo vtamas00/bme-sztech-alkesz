@@ -14,6 +14,7 @@ public class Player {
 	
 	private Position myLastPos;		/* Holds the last position of the player */
 	private Position myPos;		/* Holds the current position of the player */
+	public Position NewPos;	/* Set by the GUI */
 	private int myBloodAlcoholRatio;	
 	private int myScore;		
 	private int myHealh;		/* Maximum number of missed objects */

@@ -16,7 +16,7 @@ public class GameState {
 		eSinglePlayer, eMultiPlayer, eDeveloper
 	}
 	public enum Game_Control_Events{
-		
+		eMouseMovement, eMouceClick
 	}
 	
 	public ArrayList<Food_Drink> FallingObjects; /* List for the objects */

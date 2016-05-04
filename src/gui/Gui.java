@@ -80,7 +80,7 @@ public class Gui extends JFrame {
 		MultiGamePanel.add(sw3);
 		
 		
-		CardLayout MainLayout = new CardLayout();
+		final CardLayout MainLayout = new CardLayout();
 		
 		ContainerPanel.setLayout(MainLayout);
 		ContainerPanel.add(MainMenuPanel,"MMP");

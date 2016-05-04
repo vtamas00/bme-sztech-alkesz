@@ -6,6 +6,7 @@ package control;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.TimerTask;
 
 import control.Food_Drink.Food_Drinks_Type;
 import control.GameState.Game_Type;
@@ -16,9 +17,10 @@ import control.GameState.Game_Type;
  * @author Dani
  *
  */
-public class Control {
+public class Control{
 	
 	private GameState currGameState;
+	private boolean isEvent;
 	
 	/*********************** Constructors *************************************/
 	
@@ -27,6 +29,7 @@ public class Control {
 	 */
 	public Control(GameState GameState) {
 		currGameState = GameState;
+		this.isEvent = false;
 	}
 
 	/************************* General methods ********************************/
@@ -41,32 +44,36 @@ public class Control {
 	 *            Elapsed time since the last call - Sampling Time if it is a
 	 *            constant variable.
 	 */
-	public void ActualizeData(final int newPosX, final int elapsedTime) {
-		// Calc the new pos of the Player
-		currGameState.Plato.setMyPos(new Position(newPosX, 0));
-		// Determine the New pos of the Falling objects.
-		Iterator iteral = currGameState.FallingObjects.iterator();
-		while(iteral.hasNext()) {
-			Food_Drink CurrObj = (Food_Drink) iteral.next();
-			CurrObj.CalcNewPos(elapsedTime);
-			
-			// Compare the i.th object and the player position 
-			if (true == CurrObj.getMyPos().isPosAequalsPosB(CurrObj.getMyPos(), currGameState.Plato.getMyPos(), currGameState.Plato.getMyBloodAlcoholRatio(), CurrObj.getMySize())) {
-				// Plato and falling object pos is equal....
-				currGameState.Plato.setMyScore(CurrObj.getMyScore());
-				currGameState.Plato.setMyBloodAlcoholRatio(CurrObj.getBloodAlcoholRatio());
-				System.out.println("\n\n The object was catched by the player:\n" + CurrObj.toString());
+	public void ActualizeData(final int elapsedTime){
+		
+		if(true == this.isEvent)
+		{
+			// Calc the new pos of the Player
+			currGameState.Plato.setMyPos(currGameState.Plato.NewPos);
+			// Determine the New pos of the Falling objects.
+			Iterator iteral = currGameState.FallingObjects.iterator();
+			while(iteral.hasNext()) {
+				Food_Drink CurrObj = (Food_Drink) iteral.next();
+				CurrObj.CalcNewPos(elapsedTime);
 				
-				iteral.remove();
-			} else {
-				// See if object is missed
-				if (0 > CurrObj.getMyPos().y) {
-					currGameState.Plato.decreaseHealth();
-					System.out.println("\n\n The object reached the zero point! :\n" + CurrObj.toString());
-					iteral.remove(); // remove object
+				// Compare the i.th object and the player position 
+				if (true == CurrObj.getMyPos().isPosAequalsPosB(CurrObj.getMyPos(), currGameState.Plato.getMyPos(), currGameState.Plato.getMyBloodAlcoholRatio(), CurrObj.getMySize())) {
+					// Plato and falling object pos is equal....
+					currGameState.Plato.setMyScore(CurrObj.getMyScore());
+					currGameState.Plato.setMyBloodAlcoholRatio(CurrObj.getBloodAlcoholRatio());
+					System.out.println("\n\n The object was catched by the player:\n" + CurrObj.toString());
+					
+					iteral.remove();
+				} else {
+					// See if object is missed
+					if (0 > CurrObj.getMyPos().y) {
+						currGameState.Plato.decreaseHealth();
+						System.out.println("\n\n The object reached the zero point! :\n" + CurrObj.toString());
+						iteral.remove(); // remove object
+					}
 				}
+	
 			}
-
 		}
 	}
 
@@ -108,7 +115,18 @@ public class Control {
 		this.currGameState.addFallingObjects(newItem);
 	}
 	
-
+	/**
+	 *	Indicates to the control class, that some changes was in the game field by the user. 
+	 */
+	public void RefreshData( )
+	{
+		this.isEvent=true;
+	}
 	
+	public void Tssshhh()
+	{
+		System.out.println("Tssssshhhh!\t" + System.currentTimeMillis());
+		
+	}
 
 }

@@ -3,6 +3,7 @@
  */
 package control;
 
+import java.util.Timer;
 
 /**
  * This calss has to schedule the whole game
@@ -10,18 +11,34 @@ package control;
  * @author chaah
  *
  */
-public class GameTimer {
+public class GameTimer implements Runnable{
+	boolean isRunning;
 	
-
-	long myTimer;
+	private Control C;
 	
 	
 	/**
 	 * @param locTimer
 	 */
-	public GameTimer() {
-		this.myTimer=0;
-		
+	public GameTimer(Control C) {
+		isRunning=true;
+		this.C=C;
+	}
+
+
+	@Override
+	public void run() {
+		try{
+			while(isRunning==true)
+			{
+				// Here comes the control actualize function
+				Thread.sleep(20);
+			}
+		}
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 }
