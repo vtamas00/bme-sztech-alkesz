@@ -20,7 +20,6 @@ public class Control {
 	public GameState currGameState;	/* Descriptor of the current game state */
 	
 	
-	
 	/*********************** Constructors *************************************/
 	
 	/**
@@ -129,5 +128,8 @@ public class Control {
 		Food_Drink newItem = new Food_Drink(objectPos.x, Position.screenHeight, new Food_Drink().RandomType());
 		this.currGameState.addFallingObjects(newItem);
 	}
+	
+
+	
 
 }

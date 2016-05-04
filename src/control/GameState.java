@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GameState {
 	public enum Game_Type{
-		eSinglePlayer, eMultiPlayer
+		eSinglePlayer, eMultiPlayer, eDeveloper
 	}
 	public enum Game_Control_Events{
 		
