@@ -182,6 +182,7 @@ public class Control{
 		boolean bReturn = true;
 		if( true == this.isGameRunning )
 		{
+			currGameState.gebugCntr++;
 			GenerateObjectsRandom();
 			ActualizeData(20);
 			if( 0>= currGameState.Plato.getMyHealh())

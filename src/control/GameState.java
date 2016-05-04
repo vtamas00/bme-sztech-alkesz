@@ -23,12 +23,13 @@ public class GameState {
 	public Player Plato; /* The player who has to catch the objects */
 	public Game_Type eGameType;	/* Gma type of the current game */
 	public Game_Control_Events eEvents;	/* Every event that changes the course of the game */
-	
+	public long gebugCntr;
 	
 	public GameState () {
 		this.eGameType = Game_Type.eMenu;
 		this.Plato = new Player( "Unknown username" );
 		this.FallingObjects = new ArrayList<Food_Drink>();
+		gebugCntr=0;
 	}
 	
 	public GameState( String myName, Game_Type eGameType )
