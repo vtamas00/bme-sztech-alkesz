@@ -13,14 +13,14 @@ import gui.Gui;
  *
  */
 public class Main {
-	public static GameState currGameState;	/* Descriptor of the current game state */
-	
+	public static GameState GameState;	/* Descriptor of the current game state */
+
 	
 	public static void main(String[] args) {
-		Control myControl = new Control("Test",Game_Type.eDeveloper);
-		Gui	myGui = new Gui(currGameState);
 		
-		myControl.TestInit();
+		Gui	myGui = new Gui(GameState);
+		Control myControl = new Control(GameState);
+
 		
 		
 		

@@ -17,7 +17,7 @@ public class Player {
 	private int myBloodAlcoholRatio;	
 	private int myScore;		
 	private int myHealh;		/* Maximum number of missed objects */
-	private String myName;
+	public String myName;
 	
 	/**
 	 * @param myLastPos the myLastPos to set

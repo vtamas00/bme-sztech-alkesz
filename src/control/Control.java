@@ -18,16 +18,15 @@ import control.GameState.Game_Type;
  */
 public class Control {
 	
-	
+	private GameState currGameState;
 	
 	/*********************** Constructors *************************************/
 	
 	/**
 	 * Default constructor of the Control class.
 	 */
-	public Control(String playerName, Game_Type eGameType) {
-		
-		this.currGameState = new GameState(playerName, eGameType);
+	public Control(GameState GameState) {
+		currGameState = GameState;
 	}
 
 	/************************* General methods ********************************/
@@ -69,26 +68,6 @@ public class Control {
 			}
 
 		}
-	}
-
-	/**
-	 * Simple test function is to try the main methods of the class.
-	 */
-	public void TestInit() {
-		Control myControl = new Control("LocalTest",Game_Type.eSinglePlayer);
-
-		
-		for(int i=1;i<30;i++)
-		{
-			myControl.GenerateObjectsRandom();
-		}
-
-		System.out.println(myControl.toString());
-
-		myControl.ActualizeData(10, 5);
-		System.out.println(myControl.toString());
-		myControl.ActualizeData(10, 10);
-		System.out.println(myControl.toString());
 	}
 
 	/*
