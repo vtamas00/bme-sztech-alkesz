@@ -17,7 +17,7 @@ import control.GameState.Game_Type;
  *
  */
 public class Control {
-	public GameState currGameState;	/* Descriptor of the current game state */
+	
 	
 	
 	/*********************** Constructors *************************************/
