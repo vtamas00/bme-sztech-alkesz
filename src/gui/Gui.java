@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import control.GameState;
+
 public class Gui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -35,10 +37,12 @@ public class Gui extends JFrame {
 	JPanel SingleGamePanel = new JPanel();
 	JPanel MultiGamePanel = new JPanel();
 	
+	private GameState g;	
 
 	Gui(GameState gameState) {
 		
 		g = gameState;
+	
 		
 		//setSize(400, 550);
 		setTitle("BME MIT Sztech :: Alkesz");
