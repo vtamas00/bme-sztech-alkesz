@@ -131,6 +131,7 @@ public class Gui extends JFrame {
 								 * This function is scheduled to run every 20
 								 * milliseconds.
 								 */
+		
 		if (g.eGameType == Game_Type.eSinglePlayer) {
 			SingleGamePanel.repaint();
 		}
