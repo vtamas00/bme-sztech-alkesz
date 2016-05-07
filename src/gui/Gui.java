@@ -47,6 +47,7 @@ public class Gui extends JFrame {
 
 		this.g = gameState;
 		this.c = control;
+		SingleGamePanel.setGameState(gameState);
 
 		// setSize(400, 550);
 		setTitle("BME MIT Sztech :: Alkesz");
@@ -86,7 +87,7 @@ public class Gui extends JFrame {
 		ContainerPanel.setLayout(MainLayout);
 		ContainerPanel.add(MainMenuPanel, "MMP");
 		ContainerPanel.add(SingleGamePanel, "SGP");
-		ContainerPanel.setPreferredSize(new Dimension(400, 550));
+		ContainerPanel.setPreferredSize(new Dimension(g.Settings.SizeX, g.Settings.SizeY));
 
 		MainLayout.show(ContainerPanel, "MMP");
 
@@ -115,7 +116,6 @@ public class Gui extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SingleGamePanel.setShowGS(true);
-				SingleGamePanel.setGameState(g);
 				SingleGamePanel.repaint();
 			}
 		});
