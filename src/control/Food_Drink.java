@@ -19,10 +19,10 @@ public class Food_Drink {
 		eSliceofPizza, eFattyBoard, eGyros, eHamburger, ePartyTray
 	}
 	
-	private Position myPos;		/* Position of the object */
+	public Position myPos;		/* Position of the object */
 	private Food_Drinks_Type myType;	/* Object type */
 	private int mySpeed;		/* [Pixel/ms] */
-	private int mySize;			/* Round shape objects, this is the radius [pixels] */
+	public int mySize;			/* Round shape objects, this is the radius [pixels] */
 	private int myScore;		/* Value of the object */
 	private int bloodAlcoholRatio; 
 	private int special;

@@ -48,6 +48,7 @@ public class Gui extends JFrame {
 		this.g = gameState;
 		this.c = control;
 		SingleGamePanel.setGameState(gameState);
+		SingleGamePanel.setControl(control);
 
 		// setSize(400, 550);
 		setTitle("BME MIT Sztech :: Alkesz");
@@ -115,7 +116,11 @@ public class Gui extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SingleGamePanel.setShowGS(true);
+				if (SingleGamePanel.getShowGS() == false) {
+					SingleGamePanel.setShowGS(true);
+				} else {
+					SingleGamePanel.setShowGS(false);
+				}
 				SingleGamePanel.repaint();
 			}
 		});

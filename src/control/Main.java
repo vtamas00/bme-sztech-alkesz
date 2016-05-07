@@ -26,17 +26,11 @@ public class Main {
 		Control myControl = new Control(GameState);
 		Gui	myGui = new Gui(GameState,myControl);
 
-//		GameTimer gT = new GameTimer(myControl);
-		
-//		GuiTimer guiT = new GuiTimer(myGui);
-		
-		
-		// Where you can now call the Control and Gui run methods.!
-//		
-		
 		(new Thread(new GameTimer(myControl))).start();
 		(new Thread(new GuiTimer(myGui))).start();
 		System.out.println("Good By MIT!");
+		
+		
 		
 	}
 }

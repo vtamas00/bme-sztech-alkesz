@@ -40,6 +40,7 @@ public class GameState {
 		this.Plato.NewPos = new Position();
 		this.Plato.NewPos.x = (double)(this.Settings.SizeX/2-this.Settings.PlatoSizeX/2);
 		this.Plato.NewPos.y = (double)(this.Settings.SizeY-this.Settings.PlatoSizeY);
+		this.Plato.myPos = this.Plato.NewPos;
 
 	}
 	

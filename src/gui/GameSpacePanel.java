@@ -2,6 +2,8 @@ package gui;
 
 import javax.swing.JPanel;
 
+import control.Control;
+import control.Food_Drink;
 import control.GameState;
 
 import java.awt.Font;
@@ -16,6 +18,7 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	private GameState g;
+	private Control c;
 	private boolean ShowGS;
 	
 	public GameSpacePanel() {
@@ -27,6 +30,10 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		g = gs;
 	}
 
+	public void setControl(Control co) {
+		c = co;
+	}
+	
 	public void setShowGS(boolean b) {
 		this.ShowGS = b;
 	}
@@ -43,6 +50,7 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		int Y = 50;
 		final int GAP = 15;
 		Font f = new Font("Verdana", Font.BOLD, 13);
+		Font l = new Font("Verdana", Font.PLAIN, 8);
 		long time_sec;
 		long time_min;
 		
@@ -77,7 +85,8 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		
 		
 		// Draw plato
-		g2d.fillRect((int)g.Plato.NewPos.x, (int)g.Plato.NewPos.y, g.Settings.PlatoSizeX, g.Settings.PlatoSizeY);
+		//g2d.fillRect((int)g.Plato.NewPos.x, (int)g.Plato.NewPos.y, g.Settings.PlatoSizeX, g.Settings.PlatoSizeY);
+		g2d.fillRect((int)g.Plato.getMyPos().x, (int)g.Plato.getMyPos().y, g.Settings.PlatoSizeX, g.Settings.PlatoSizeY);
 		
 		if (ShowGS == true) {
 			Y += GAP;
@@ -85,28 +94,34 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 			Y += GAP;
 			g2d.drawString("UserName : " + this.g.Plato.myName, X, Y);
 			Y += GAP;
+			g2d.setFont(l);
+			for (Food_Drink item : g.FallingObjects ) {
+				g2d.drawString(item.toString(), X, Y);
+				Y += GAP;
+			}
+			g2d.setFont(f);
 		}
 		
+		// Draw falling objects
 		
-		
-		
-		
-		
+		for (Food_Drink item : g.FallingObjects ) {
+			g2d.fillOval((int)item.myPos.x-item.mySize/2, (int)item.myPos.y-item.mySize/2, item.mySize, item.mySize);
+		}
 
-		// g2d.drawString("OBJECT", 40, 20);
-		// g2d.drawRect(100, 100, 100, 100);
 
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent evt) {
-				
+		g.NPos((double)evt.getPoint().x);
+		c.HandleUserEvent();				
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent evt) {
 		//System.out.println(evt.getPoint().x + ", " + evt.getPoint().y);
 		g.NPos((double)evt.getPoint().x);
+		c.HandleUserEvent();
 	}
 
 }
