@@ -16,7 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import control.Control;
+import control.Food_Drink;
 import control.GameState;
+import control.Position;
 import control.GameState.Game_Type;
 
 public class Gui extends JFrame {
@@ -98,6 +100,7 @@ public class Gui extends JFrame {
 				MainLayout.show(ContainerPanel, "SGP");
 				g.eGameType = Game_Type.eSinglePlayer;
 				c.StartGame();
+				
 			}
 		});
 
@@ -122,6 +125,8 @@ public class Gui extends JFrame {
 					SingleGamePanel.setShowGS(false);
 				}
 				SingleGamePanel.repaint();
+				//Food_Drink newItem = new Food_Drink(Position.screenHeight/2, 20 , new Food_Drink().RandomType());
+				//g.addFallingObjects(newItem);
 			}
 		});
 
