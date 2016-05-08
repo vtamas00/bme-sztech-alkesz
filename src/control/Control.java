@@ -71,8 +71,10 @@ public class Control{
 					iteral.remove();
 				} else {
 					// See if object is missed
-					if (0 > CurrObj.getMyPos().y) {
-						currGameState.Plato.decreaseHealth();
+					if (Position.screenHeight < CurrObj.getMyPos().y) {
+						//TODO
+						//FIXME 
+//						currGameState.Plato.decreaseHealth();
 						System.out.println("\n\n The object reached the zero point! :\n" + CurrObj.toString());
 						iteral.remove(); // remove object
 					}
@@ -103,11 +105,11 @@ public class Control{
 	public void GenerateObjectsRandom( )
 	{
 		ObjGenCntr++;
-		if( ObjGenCntr*currGameState.Plato.getMyBloodAlcoholRatio() > 50)
+		if( ObjGenCntr*currGameState.Plato.getMyBloodAlcoholRatio() > 300)
 		{
 			Random rand = new Random();
 			double newPosX = rand.nextDouble() * Position.screenWidth +1;
-			Food_Drink newItem = new Food_Drink(newPosX, Position.screenHeight, new Food_Drink().RandomType());
+			Food_Drink newItem = new Food_Drink(newPosX, 0, new Food_Drink().RandomType());
 			this.currGameState.addFallingObjects(newItem);
 			ObjGenCntr=0;
 		}
@@ -120,7 +122,7 @@ public class Control{
 	 */
 	public void GenerateObject( Position objectPos )
 	{
-		Food_Drink newItem = new Food_Drink(objectPos.x, Position.screenHeight, new Food_Drink().RandomType());
+		Food_Drink newItem = new Food_Drink(objectPos.x, 0, new Food_Drink().RandomType());
 		this.currGameState.addFallingObjects(newItem);
 	}
 	

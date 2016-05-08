@@ -134,7 +134,7 @@ public class Food_Drink {
 				break;
 			}
 		} // switch
-		this.mySpeed = (-1)* this.mySpeed;
+		this.mySpeed = this.mySpeed;
 		
 	}
 	/**
@@ -219,6 +219,7 @@ public class Food_Drink {
 				this.bloodAlcoholRatio = 0;
 				break;
 			}
+
 		} // switch
 	}
 	/**
@@ -475,7 +476,8 @@ public class Food_Drink {
 	 * @param elapsedTime the dynamic time stamp to calculate object position 
 	 */
 	public void CalcNewPos( int elapsedTime ) {
-		double newY = myPos.y+this.mySpeed*elapsedTime;
+		//FIXME MAGIC!!!
+		double newY = myPos.y+this.mySpeed*elapsedTime*0.01;
 		myPos.y=newY; 
 	}
 	

@@ -28,7 +28,7 @@ public class GameState {
 	
 	public GameState () {
 		this.eGameType = Game_Type.eMenu;
-		this.Plato = new Player( "Unknown username" );
+		this.Plato = new Player( "CunciSquirrel" );
 		this.FallingObjects = new ArrayList<Food_Drink>();
 		gebugCntr=0;
 		this.Settings = new GameSettings();
