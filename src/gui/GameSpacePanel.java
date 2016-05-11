@@ -94,12 +94,8 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 			Y += GAP;
 			g2d.drawString("UserName : " + this.g.Plato.myName, X, Y);
 			Y += GAP;
-			g2d.setFont(l);
-			for (Food_Drink item : g.FallingObjects ) {
-				g2d.drawString(item.toString(), X, Y);
-				Y += GAP;
-			}
-			g2d.setFont(f);
+			g2d.drawString("Fallingobjects : " + this.g.FallingObjects.size(), X, Y);
+
 		}
 		
 		// Draw falling objects
