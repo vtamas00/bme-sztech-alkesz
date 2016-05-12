@@ -87,7 +87,9 @@ public class Position {
 	 */
 	public Boolean isPosAequalsPosB(Position posA, Position posB, double compareValue, int areaFactor) {
 		Boolean bReturn=false;
-		double factor = areaFactor*(1-compareValue);
+//		double factor = areaFactor*(1-compareValue);
+//		double factor = Math.pow(1.5,areaFactor)*compareValue;
+		double factor = areaFactor;
 		double aLow[] = {posA.x-factor, posA.y-factor};
 		double aHigh[] = {posA.x+factor, posA.y+factor};
 		double bLow[] = {posB.x-factor, posB.y-factor};
@@ -97,10 +99,6 @@ public class Position {
 		if( (aLow[0] >= bHigh[0]) && (aHigh[0] >= bLow[0]) )
 		{
 			// The x coordinate is overlap
-			bReturn=true;
-		}
-		else
-		{
 			if( (aLow[1] >= bHigh[1]) && (aHigh[1] >= bLow[1]) )
 			{
 				// The y coordinate is overlap

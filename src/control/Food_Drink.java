@@ -495,7 +495,7 @@ public class Food_Drink {
 		
 		double seed = rand.nextGaussian();
 		double seed_abs = Math.abs(seed); 
-		System.out.println("seed:" + seed + ",SeedAbs: "+ seed_abs);
+//		System.out.println("seed:" + seed + ",SeedAbs: "+ seed_abs);
 		
 		
 		if(seed >0)

@@ -67,6 +67,7 @@ public class Control{
 					currGameState.Plato.setMyScore(CurrObj.getMyScore());
 					currGameState.Plato.setMyBloodAlcoholRatio(CurrObj.getBloodAlcoholRatio());
 					System.out.println("\n\n The object was catched by the player:\n" + CurrObj.toString());
+					System.out.println("Player Position:\t" + currGameState.getPlato().getMyPos().toString() +"\n" );
 					
 					iteral.remove();
 				} else {
@@ -76,6 +77,7 @@ public class Control{
 						//FIXME 
 //						currGameState.Plato.decreaseHealth();
 						System.out.println("\n\n The object reached the zero point! :\n" + CurrObj.toString());
+						System.out.println("Player Position:\t" + currGameState.getPlato().getMyPos().toString() +"\n" );
 						iteral.remove(); // remove object
 					}
 				}
@@ -100,12 +102,13 @@ public class Control{
 	}
 	
 	/**
-	 * This function will generate one new falling object with random parameters.
+	 * This function will generate one new falling object with random parameters, in every 500 ms
 	 */
 	public void GenerateObjectsRandom( )
 	{
+		// Need here some refactor 
 		ObjGenCntr++;
-		if( ObjGenCntr*currGameState.Plato.getMyBloodAlcoholRatio() > 300)
+		if( ObjGenCntr > 100)
 		{
 			Random rand = new Random();
 			double newPosX = rand.nextDouble() * Position.screenWidth +1;
@@ -187,6 +190,9 @@ public class Control{
 			currGameState.gebugCntr++;
 			GenerateObjectsRandom();
 			ActualizeData(20);
+			// just for debug
+//			System.out.println("Player Position:\t" + currGameState.getPlato().getMyPos().toString() +"\n" );
+			
 			if( 0>= currGameState.Plato.getMyHealh())
 			{
 				bReturn=false;
