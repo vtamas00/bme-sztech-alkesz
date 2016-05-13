@@ -13,9 +13,9 @@ public class GuiTimer implements Runnable {
 	boolean isRunning;
 	private Gui g;
 
-	GuiTimer(Gui G)
+	GuiTimer(Gui g)
 	{
-		this.g=G;
+		this.g=g;
 		this.isRunning=true;
 	}
 	

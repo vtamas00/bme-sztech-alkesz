@@ -16,7 +16,6 @@ import gui.Gui;
  */
 public class Main {
 	public static GameState GameState;	/* Descriptor of the current game state */
-
 	
 	public static void main(String[] args) {
 		

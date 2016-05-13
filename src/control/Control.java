@@ -18,12 +18,14 @@ import control.GameState.Game_Type;
  *
  */
 public class Control{
+	final public int TIME_SAMPLE = 20; /* Default time sample used by the whole game. */
 	
 	private GameState currGameState;
 	private boolean isEvent;
 	private boolean isGameRunning;
 	private long ObjGenCntr=0;
 	public long cntr=0;
+	
 	
 	
 	/*********************** Constructors *************************************/
@@ -58,25 +60,27 @@ public class Control{
 			// Determine the New pos of the Falling objects.
 			Iterator iteral = currGameState.FallingObjects.iterator();
 			while(iteral.hasNext()) {
-				Food_Drink CurrObj = (Food_Drink) iteral.next();
-				CurrObj.CalcNewPos(elapsedTime);
+				Food_Drink currObj = (Food_Drink) iteral.next();
+				currObj.IncreaseMytime(TIME_SAMPLE);
+				currObj.CalcNewPos(elapsedTime);
+				
 				
 				// Compare the i.th object and the player position 
-				if (true == CurrObj.getMyPos().isPosAequalsPosB(CurrObj.getMyPos(), currGameState.Plato.getMyPos(), currGameState.Plato.getMyBloodAlcoholRatio(), CurrObj.getMySize())) {
+				if (true == currObj.getMyPos().isPosAequalsPosB(currObj.getMyPos(), currGameState.Plato.getMyPos(), currGameState.Plato.getMyBloodAlcoholRatio(), currObj.getMySize())) {
 					// Plato and falling object pos is equal....
-					currGameState.Plato.setMyScore(CurrObj.getMyScore());
-					currGameState.Plato.setMyBloodAlcoholRatio(CurrObj.getBloodAlcoholRatio());
-					System.out.println("\n\n The object was catched by the player:\n" + CurrObj.toString());
+					currGameState.Plato.setMyScore(currObj.getMyScore());
+					currGameState.Plato.setMyBloodAlcoholRatio(currObj.getBloodAlcoholRatio());
+					System.out.println("\n\n The object was catched by the player:\n" + currObj.toString());
 					System.out.println("Player Position:\t" + currGameState.getPlato().getMyPos().toString() +"\n" );
 					
 					iteral.remove();
 				} else {
 					// See if object is missed
-					if (Position.screenHeight < CurrObj.getMyPos().y) {
+					if (Position.screenHeight < currObj.getMyPos().y) {
 						//TODO
 						//FIXME 
-//						currGameState.Plato.decreaseHealth();
-						System.out.println("\n\n The object reached the zero point! :\n" + CurrObj.toString());
+						currGameState.Plato.decreaseHealth();
+						System.out.println("\n\n The object reached the zero point! :\n" + currObj.toString());
 						System.out.println("Player Position:\t" + currGameState.getPlato().getMyPos().toString() +"\n" );
 						iteral.remove(); // remove object
 					}
@@ -85,6 +89,8 @@ public class Control{
 			}
 		}
 	}
+
+
 
 	/*
 	 * (non-Javadoc)
@@ -189,7 +195,7 @@ public class Control{
 		{
 			currGameState.gebugCntr++;
 			GenerateObjectsRandom();
-			ActualizeData(20);
+			ActualizeData(TIME_SAMPLE);
 			// just for debug
 //			System.out.println("Player Position:\t" + currGameState.getPlato().getMyPos().toString() +"\n" );
 			

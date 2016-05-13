@@ -14,15 +14,15 @@ import java.util.Timer;
 public class GameTimer implements Runnable{
 	boolean isRunning;
 	
-	private Control C;
+	private Control c;
 	
 	
 	/**
 	 * @param locTimer
 	 */
-	public GameTimer(Control C) {
+	public GameTimer(Control c) {
 		isRunning=true;
-		this.C=C;
+		this.c=c;
 	}
 
 
@@ -32,8 +32,8 @@ public class GameTimer implements Runnable{
 			while(true==isRunning)
 			{
 				// Here comes the control actualize function
-				isRunning=C.RefreshData();
-				Thread.sleep(20);
+				isRunning=c.RefreshData();
+				Thread.sleep(c.TIME_SAMPLE);
 			}
 		}
 		catch (InterruptedException e)
