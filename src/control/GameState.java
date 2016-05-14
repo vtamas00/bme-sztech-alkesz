@@ -13,17 +13,36 @@ import java.util.ArrayList;
  */
 public class GameState {
 	public enum Game_Type{
-		eSinglePlayer, eMultiPlayer, eDeveloper
+		eSinglePlayer, eMultiPlayer, eMenu, eDeveloper
 	}
 	public enum Game_Control_Events{
-		
+		eMouseMovement, eMouceClick
 	}
 	
 	public ArrayList<Food_Drink> FallingObjects; /* List for the objects */
 	public Player Plato; /* The player who has to catch the objects */
 	public Game_Type eGameType;	/* Gma type of the current game */
 	public Game_Control_Events eEvents;	/* Every event that changes the course of the game */
+	public long gebugCntr;
+	public GameSettings Settings;
 	
+	public GameState () {
+		this.eGameType = Game_Type.eMenu;
+		this.Plato = new Player( "CunciSquirrel" );
+		this.FallingObjects = new ArrayList<Food_Drink>();
+		gebugCntr=0;
+		this.Settings = new GameSettings();
+		this.Settings.SizeX = 550;
+		this.Settings.SizeY = 700;
+		this.Settings.PlatoSizeX = 110;
+		this.Settings.PlatoSizeY = 25;
+		
+		this.Plato.NewPos = new Position();
+		this.Plato.NewPos.x = (double)(this.Settings.SizeX/2-this.Settings.PlatoSizeX/2);
+		this.Plato.NewPos.y = (double)(this.Settings.SizeY-this.Settings.PlatoSizeY);
+		this.Plato.myPos = this.Plato.NewPos;
+
+	}
 	
 	public GameState( String myName, Game_Type eGameType )
 	{
@@ -47,9 +66,16 @@ public class GameState {
 		return FallingObjects;
 	}
 
-	/**
-	 * @return the plato
-	 */
+	public void NPos(double x) {
+		if (x<this.Settings.PlatoSizeX/2) {
+			x = this.Settings.PlatoSizeX/2;
+		}
+		if (x>this.Settings.SizeX-this.Settings.PlatoSizeX/2) {
+			x = this.Settings.SizeX-this.Settings.PlatoSizeX/2;
+		}
+		this.Plato.NewPos.x = (double)(x-this.Settings.PlatoSizeX/2);
+	}
+
 	public Player getPlato() {
 		return Plato;
 	}

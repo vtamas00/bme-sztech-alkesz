@@ -12,12 +12,13 @@ package control;
  */
 public class Player {
 	
-	private Position myLastPos;		/* Holds the last position of the player */
-	private Position myPos;		/* Holds the current position of the player */
-	private int myBloodAlcoholRatio;	
+	public Position myLastPos;		/* Holds the last position of the player */
+	public Position myPos;		/* Holds the current position of the player */
+	public Position NewPos;	/* Set by the GUI */
+	private double myBloodAlcoholRatio;	
 	private int myScore;		
 	private int myHealh;		/* Maximum number of missed objects */
-	private String myName;
+	public String myName;
 	
 	/**
 	 * @param myLastPos the myLastPos to set
@@ -53,7 +54,7 @@ public class Player {
 	/**
 	 * @return the myBloodAlcoholRatio
 	 */
-	public int getMyBloodAlcoholRatio() {
+	public double getMyBloodAlcoholRatio() {
 		return myBloodAlcoholRatio;
 	}
 	/**
@@ -61,6 +62,10 @@ public class Player {
 	 */
 	public void setMyBloodAlcoholRatio(int bloodAlcoholRatio) {
 		this.myBloodAlcoholRatio += bloodAlcoholRatio;
+		if(0>this.myBloodAlcoholRatio)
+		{
+			this.myBloodAlcoholRatio=1;
+		}
 	}
 	/**
 	 * @return the myScore
@@ -93,7 +98,7 @@ public class Player {
 		this.myLastPos = new Position();
 		this.myPos = new Position();
 		this.myScore = 0;
-		this.myBloodAlcoholRatio = 0;
+		this.myBloodAlcoholRatio = 1;
 		this.myName = myName;
 		setMyLastPos(new Position());
 		setMyPos(new Position());
@@ -105,7 +110,7 @@ public class Player {
 		this.myLastPos = newPos;
 		this.myPos = newPos;
 		this.myScore = 0;
-		this.myBloodAlcoholRatio = 0;
+		this.myBloodAlcoholRatio = 1;
 		this.myName = myName;
 		setMyLastPos(newPos);
 		setMyPos(newPos);

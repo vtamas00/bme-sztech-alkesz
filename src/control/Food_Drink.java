@@ -19,13 +19,14 @@ public class Food_Drink {
 		eSliceofPizza, eFattyBoard, eGyros, eHamburger, ePartyTray
 	}
 	
-	private Position myPos;		/* Position of the object */
+	public Position myPos;		/* Position of the object */
 	private Food_Drinks_Type myType;	/* Object type */
 	private int mySpeed;		/* [Pixel/ms] */
-	private int mySize;			/* Round shape objects, this is the radius [pixels] */
+	public int mySize;			/* Round shape objects, this is the radius [pixels] */
 	private int myScore;		/* Value of the object */
 	private int bloodAlcoholRatio; 
 	private int special;
+	public int timeInGame;		/* This variable indicates that how old it this object is. */
 	
 	/**
 	 * @return the myPos
@@ -57,6 +58,15 @@ public class Food_Drink {
 	public int getMySpeed() {
 		return mySpeed;
 	}
+	
+	/**
+	 * Increase the value of timeInGame variable with the global Time sample constants: 20[ms].
+	 * @param elapsedTime Time elapsed since the last check.
+	 */
+	public void IncreaseMytime(int elapsedTime )
+	{
+		this.timeInGame=this.timeInGame+elapsedTime;
+	}
 	/**
 	 * @param myType determines the speed of the object
 	 */
@@ -65,12 +75,12 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.mySpeed = 15;
+				this.mySpeed = 10;
 				break;
 			}
 			case eGlassOfBeer:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 2;
 				break;
 			}
 			case ePintOfBeer:
@@ -80,27 +90,27 @@ public class Food_Drink {
 			}
 			case eGlassOfVine:
 			{
-				this.mySpeed = 5;
+				this.mySpeed = 4;
 				break;
 			}
 			case eCoctail:
 			{
-				this.mySpeed = 7;
+				this.mySpeed = 5;
 				break;
 			}
 			case eSmallSpirit:
 			{
-				this.mySpeed = 9;
+				this.mySpeed = 6;
 				break;
 			}
 			case eLongSpirit:
 			{
-				this.mySpeed = 10;
+				this.mySpeed = 7;
 				break;
 			}
 			case eHFullofSunfSeed:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 2;
 				break;
 			}
 			case eHFullofPeanuts:
@@ -110,31 +120,31 @@ public class Food_Drink {
 			}
 			case eFattyBoard:
 			{
-				this.mySpeed = 5;
+				this.mySpeed = 4;
 				break;
 			}
 			case eSliceofPizza:
 			{
-				this.mySpeed = 7;
+				this.mySpeed = 5;
 				break;
 			}
 			case eGyros:
 			{
-				this.mySpeed = 9;
+				this.mySpeed = 6;
 				break;
 			}
 			case eHamburger:
 			{
-				this.mySpeed = 10;
+				this.mySpeed = 7;
 				break;
 			}
 			default:
 			{
-				this.mySpeed = 1;
+				this.mySpeed = 2;
 				break;
 			}
 		} // switch
-		this.mySpeed = (-1)* this.mySpeed;
+		this.mySpeed = this.mySpeed;
 		
 	}
 	/**
@@ -219,6 +229,7 @@ public class Food_Drink {
 				this.bloodAlcoholRatio = 0;
 				break;
 			}
+
 		} // switch
 	}
 	/**
@@ -235,7 +246,7 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.mySize = 1;
+				this.mySize = 3;
 				break;
 			}
 			case eGlassOfBeer:
@@ -260,12 +271,12 @@ public class Food_Drink {
 			}
 			case eSmallSpirit:
 			{
-				this.mySize = 5;
+				this.mySize = 7;
 				break;
 			}
 			case eLongSpirit:
 			{
-				this.mySize = 3;
+				this.mySize = 5;
 				break;
 			}
 			case eHFullofSunfSeed:
@@ -290,17 +301,17 @@ public class Food_Drink {
 			}
 			case eGyros:
 			{
-				this.mySize = 5;
+				this.mySize = 7;
 				break;
 			}
 			case eHamburger:
 			{
-				this.mySize = 3;
+				this.mySize = 5;
 				break;
 			}
 			default:
 			{
-				this.mySize = 0;
+				this.mySize = 3;
 				break;
 			}
 		} // switch
@@ -475,8 +486,11 @@ public class Food_Drink {
 	 * @param elapsedTime the dynamic time stamp to calculate object position 
 	 */
 	public void CalcNewPos( int elapsedTime ) {
-		double newY = myPos.y+this.mySpeed*elapsedTime;
-		myPos.y=newY; 
+		//FIXME MAGIC!!!
+//		double newY = myPos.y+this.mySpeed*elapsedTime*0.01;
+		double newY = Math.pow(this.mySpeed,this.timeInGame*0.001);
+		
+		myPos.y=myPos.y+newY; 
 	}
 	
 	/**
@@ -493,7 +507,7 @@ public class Food_Drink {
 		
 		double seed = rand.nextGaussian();
 		double seed_abs = Math.abs(seed); 
-		System.out.println("seed:" + seed + ",SeedAbs: "+ seed_abs);
+//		System.out.println("seed:" + seed + ",SeedAbs: "+ seed_abs);
 		
 		
 		if(seed >0)
