@@ -14,13 +14,16 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import network.internal.PingSender;
+import network.internal.ServerThread;
+
 public class Cluster implements Closeable {
 
 	private static final InetAddress GROUP;
 
 	private static final String MULTICAST_IP = "230.0.113.0";
 
-	static final int MULTICAST_PORT = 4446;
+	public static final int MULTICAST_PORT = 4446;
 
 	static {
 		try {
@@ -34,23 +37,40 @@ public class Cluster implements Closeable {
 
 	private AtomicBoolean closed = new AtomicBoolean(false);
 
+	private final FailureListener failureListener;
+
 	private ObjectOutputStream objectOutputStream;
+
+	private final ObjectReceiver objectReceiver;
 
 	private PingSender pingSender;
 
 	private ServerSocket serverSocket;
 
+	private ServerThread serverThread;
+
+	public Cluster(final ObjectReceiver objectReceiver, final FailureListener failureListener) {
+		super();
+		this.objectReceiver = objectReceiver;
+		this.failureListener = failureListener;
+	}
+
 	@Override
-	public void close() throws IOException {
+	public synchronized void close() throws IOException {
 		if (!closed.getAndSet(true)) {
 			if (pingSender != null) {
 				pingSender.close();
+			}
+
+			if (serverThread != null) {
+				serverThread.close();
 			}
 
 			if (serverSocket != null) {
 				serverSocket.close();
 			}
 			if (objectOutputStream != null) {
+				trySendingCloseToOtherNode();
 				objectOutputStream.close();
 			}
 
@@ -60,21 +80,24 @@ public class Cluster implements Closeable {
 		}
 	}
 
-	public void connect() throws IOException {
+	public Cluster connect() throws IOException {
 		this.serverSocket = new ServerSocket(0);
-
-		// TODO start the server listener thread
 
 		int serverPort = serverSocket.getLocalPort();
 		byte[] serverPortBA = convertIntToByteArray(serverPort);
+		this.pingSender = new PingSender(GROUP, serverPortBA, failureListener);
 
-		pingSender = new PingSender(GROUP, serverPortBA);
+		this.serverThread = new ServerThread(serverSocket, objectReceiver, failureListener, pingSender);
+		this.serverThread.start();
+
 		new Thread(pingSender).start();
 
 		InetSocketAddress remoteSocketAddress = waitForPing(serverPortBA);
+
 		clientSocket = new Socket(remoteSocketAddress.getAddress(), remoteSocketAddress.getPort());
 
 		objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+		return this;
 	}
 
 	private int convertByteArrayToInt(final byte[] bytes) {
@@ -97,6 +120,15 @@ public class Cluster implements Closeable {
 		objectOutputStream.flush();
 	}
 
+	private void trySendingCloseToOtherNode() {
+		try {
+			send(ClusterClose.INSTANCE);
+		} catch (IOException e) {
+			// We do not care if there is an exception on the channel at this
+			// point
+		}
+	}
+
 	private InetSocketAddress waitForPing(final byte[] serverPortBA) {
 		try (MulticastSocket socket = new MulticastSocket(Cluster.MULTICAST_PORT)) {
 			System.out.println(GROUP.getHostAddress());
@@ -112,7 +144,6 @@ public class Cluster implements Closeable {
 					int remotePort = convertByteArrayToInt(buf);
 					remoteSocketAddress = new InetSocketAddress(packet.getAddress(), remotePort);
 				}
-
 			}
 			socket.leaveGroup(GROUP);
 			return remoteSocketAddress;

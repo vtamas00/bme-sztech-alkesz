@@ -1,4 +1,4 @@
-package network;
+package network.internal;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -6,6 +6,9 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import network.Cluster;
+import network.FailureListener;
 
 public class PingSender implements Runnable, Closeable {
 
@@ -15,15 +18,14 @@ public class PingSender implements Runnable, Closeable {
 
 	private byte[] nodeId;
 
-	public PingSender(final InetAddress group, final byte[] nodeId) {
+	public PingSender(final InetAddress group, final byte[] nodeId, final FailureListener failureListener) {
 		this.group = group;
 		this.nodeId = nodeId;
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-
+		closed.set(true);
 	}
 
 	private void fail(final IOException e) {

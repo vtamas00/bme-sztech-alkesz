@@ -1,4 +1,4 @@
-package network;
+package network.internal;
 
 import java.io.Closeable;
 import java.io.IOException;
