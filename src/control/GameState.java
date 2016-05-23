@@ -113,13 +113,13 @@ public class GameState {
 	}
 
 	public void NPos(double x) {
-		if (x<this.Settings.PlatoSizeX/2) {
-			x = this.Settings.PlatoSizeX/2;
+		if (x<this.Plato.sizeX/2) {
+			x = this.Plato.sizeX/2;
 		}
-		if (x>this.Settings.SizeX-this.Settings.PlatoSizeX/2) {
-			x = this.Settings.SizeX-this.Settings.PlatoSizeX/2;
+		if (x>this.Plato.sizeX-this.Plato.sizeX/2) {
+			x = this.Plato.sizeX-this.Plato.sizeX/2;
 		}
-		this.Plato.NewPos.x = (double)(x-this.Settings.PlatoSizeX/2);
+		this.Plato.NewPos.x = (double)(x-this.Plato.sizeX/2);
 	}
 
 	public Player getPlato() {

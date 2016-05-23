@@ -16,9 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import control.Control;
-import control.Food_Drink;
 import control.GameState;
-import control.Position;
 import control.GameState.Game_Type;
 
 public class Gui extends JFrame {
@@ -41,7 +39,7 @@ public class Gui extends JFrame {
 	JPanel ContainerPanel = new JPanel();
 	JPanel MainMenuPanel = new JPanel();
 	GameSpacePanel SingleGamePanel = new GameSpacePanel();
-	JPanel MultiGamePanel = new JPanel();
+	GameSpacePanel MultiGamePanel = new GameSpacePanel();
 
 	private GameState g;
 	private Control c;
@@ -56,7 +54,7 @@ public class Gui extends JFrame {
 		// setSize(400, 550);
 		setTitle("BME MIT Sztech :: Alkesz");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 
 		GridBagConstraints gbc = new GridBagConstraints();
 		MainMenuPanel.setLayout(new GridBagLayout());
@@ -91,7 +89,8 @@ public class Gui extends JFrame {
 		ContainerPanel.setLayout(MainLayout);
 		ContainerPanel.add(MainMenuPanel, "MMP");
 		ContainerPanel.add(SingleGamePanel, "SGP");
-		ContainerPanel.setPreferredSize(new Dimension((int)g.Plato.myPos.screenWidth, (int)g.Plato.myPos.screenWidth));
+		ContainerPanel.add(MultiGamePanel, "MGP");
+		ContainerPanel.setPreferredSize(new Dimension((int)g.Plato.myPos.GetScreenWidth(), (int)g.Plato.myPos.GetScreenHeight()));
 
 		MainLayout.show(ContainerPanel, "MMP");
 
@@ -102,6 +101,16 @@ public class Gui extends JFrame {
 				g.eGameType = Game_Type.eSinglePlayer;
 				c.StartGame();
 				
+			}
+		});
+		
+		bMultiPlayer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainLayout.show(ContainerPanel, "MGP");
+				g.eGameType = Game_Type.eMultiPlayer;
+				c.StartGame();				
 			}
 		});
 

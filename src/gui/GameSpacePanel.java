@@ -77,16 +77,16 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		// Print time
 		g2d.drawString(zero_min + time_min + ":" + zero_sec + time_sec, X, Y);
 		// Print bloodpercent
-		g2d.drawString(""+g.Plato.getMyHealh(), (int)(g.Settings.SizeX*0.35), Y);
+		g2d.drawString(""+g.Plato.getMyHealh(), (int)(g.Plato.myPos.GetScreenWidth()*0.35), Y);
 		// Print bloodpercent
-		g2d.drawString(g.Plato.getMyBloodAlcoholRatio()+"%", (int)(g.Settings.SizeX*0.65), Y);
+		g2d.drawString(g.Plato.getMyBloodAlcoholRatio()+"%", (int)(g.Plato.myPos.GetScreenWidth()*0.65), Y);
 		// Print experience point
-		g2d.drawString(g.Plato.getMyScore()+"xp", g.Settings.SizeX-70, Y);
+		g2d.drawString(g.Plato.getMyScore()+"xp", (int) (g.Plato.myPos.GetScreenWidth()-70), Y);
 		
 		
 		// Draw plato
 		//g2d.fillRect((int)g.Plato.NewPos.x, (int)g.Plato.NewPos.y, g.Settings.PlatoSizeX, g.Settings.PlatoSizeY);
-		g2d.fillRect((int)g.Plato.getMyPos().x, (int)g.Plato.getMyPos().y, g.Settings.PlatoSizeX, g.Settings.PlatoSizeY);
+		g2d.fillRect((int)g.Plato.getMyPos().x, (int)g.Plato.getMyPos().y, g.Plato.sizeX, g.Plato.sizeY);
 		
 		if (ShowGS == true) {
 			Y += GAP;
