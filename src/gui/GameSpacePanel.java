@@ -88,6 +88,8 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		//g2d.fillRect((int)g.Plato.NewPos.x, (int)g.Plato.NewPos.y, g.Settings.PlatoSizeX, g.Settings.PlatoSizeY);
 		g2d.fillRect((int)g.Plato.getMyPos().x, (int)g.Plato.getMyPos().y, g.Plato.sizeX, g.Plato.sizeY);
 		
+		System.out.println("X=" + g.Plato.getMyPos().x + " Y=" + g.Plato.getMyPos().y + " SizeX=" + g.Plato.sizeX + " SizeY=" + g.Plato.sizeY);
+		System.out.println("NewPosX=" + g.Plato.NewPos.x  + " NoewPosY=" + g.Plato.NewPos.y);
 		if (ShowGS == true) {
 			Y += GAP;
 			g2d.drawString("GameSate", X, Y);
@@ -115,7 +117,7 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 
 	@Override
 	public void mouseMoved(MouseEvent evt) {
-		//System.out.println(evt.getPoint().x + ", " + evt.getPoint().y);
+		// System.out.println(evt.getPoint().x + ", " + evt.getPoint().y);
 		g.NPos((double)evt.getPoint().x);
 		c.HandleUserEvent();
 	}
