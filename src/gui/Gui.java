@@ -33,9 +33,10 @@ public class Gui extends JFrame {
 	JButton bSettings = new JButton("Settings");
 	JButton bStatistics = new JButton("Statistics");
 
-	JButton sw2 = new JButton("Go back to main menu");
-	JButton sw3 = new JButton("Go back to main menu");
-	JButton sw4 = new JButton("Print GameState");
+	JButton sw2 = new JButton("Main menu");
+	JButton sw3 = new JButton("Main menu");
+	JButton sw4 = new JButton("Pasue");
+	JButton sw5 = new JButton("Reset");
 
 	JPanel ContainerPanel = new JPanel();
 	JPanel MainMenuPanel = new JPanel();
@@ -105,6 +106,7 @@ public class Gui extends JFrame {
 		});
 
 		SingleGamePanel.add(sw4);
+		SingleGamePanel.add(sw5);
 
 		sw2.addActionListener(new ActionListener() {
 
@@ -119,17 +121,19 @@ public class Gui extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (SingleGamePanel.getShowGS() == false) {
-					SingleGamePanel.setShowGS(true);
-				} else {
-					SingleGamePanel.setShowGS(false);
-				}
-				SingleGamePanel.repaint();
-				//Food_Drink newItem = new Food_Drink(Position.screenHeight/2, 20 , new Food_Drink().RandomType());
-				//g.addFallingObjects(newItem);
+				c.Pause();
 			}
 		});
 
+		sw5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				c.Restart();
+			}
+		});
+
+		
 		add(ContainerPanel);
 		setLayout(MainLayout);
 		pack();
