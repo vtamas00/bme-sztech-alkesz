@@ -91,7 +91,7 @@ public class Gui extends JFrame {
 		ContainerPanel.setLayout(MainLayout);
 		ContainerPanel.add(MainMenuPanel, "MMP");
 		ContainerPanel.add(SingleGamePanel, "SGP");
-		ContainerPanel.setPreferredSize(new Dimension(g.Settings.SizeX, g.Settings.SizeY));
+		ContainerPanel.setPreferredSize(new Dimension((int)g.Plato.myPos.screenWidth, (int)g.Plato.myPos.screenWidth));
 
 		MainLayout.show(ContainerPanel, "MMP");
 

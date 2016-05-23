@@ -19,6 +19,10 @@ public class Player {
 	 * Size of the player in the Y dimension.
 	 */
 	public final int sizeX = 75;
+	/**
+	 * Initil health of the player.
+	 */
+	public static final int maxHealth = 10;
 	
 	/**
 	 * Holds the last position of the player
@@ -120,7 +124,7 @@ public class Player {
 	 * @param myHealh the myHealh to set
 	 */
 	private void setMyHealh( ) {
-		this.myHealh = 10;	/* Default value, change here if needed! */
+		this.myHealh = maxHealth;	/* Default value, change here if needed! */
 	}
 	
 	/************************* Constructors ***********************************/
@@ -175,9 +179,13 @@ public class Player {
 	 */
 	public void ResetPlayer()
 	{
-		this.myHealh=10;
+		this.myHealh=maxHealth;
 		this.myBloodAlcoholRatio=0;
 		this.myScore=0;
+		this.NewPos.x = (double)(this.sizeX/2-this.myPos.screenWidth/2);
+		this.NewPos.y = (double)(this.sizeY-this.myPos.screenHeight);
+		this.myLastPos=this.NewPos;
+		this.myPos=this.NewPos;
 		
 	}
 }

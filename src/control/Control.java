@@ -226,7 +226,7 @@ public class Control{
 		{
 			iteral.remove();
 		}
-		this.currGameState.Plato.setMyBloodAlcoholRatio(0);
+		this.currGameState.Plato.ResetPlayer()
 		this.isGameRunning=true;
 	}
 

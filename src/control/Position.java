@@ -12,8 +12,8 @@ package control;
  */
 public class Position {
 	
-	public static final double screenHeight = 700;	/* in pixels */
-	public static final double screenWidth = 550;	/* in pixels */
+	public final double screenHeight = 700;	/* in pixels */
+	public final double screenWidth = 550;	/* in pixels */
 	
 	public double x;
 	public double y;
