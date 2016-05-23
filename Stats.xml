@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE GameStatistics SYSTEM "roles.dtd">
+<GameStatistics>
+    <role1>a</role1>
+    <role2>B</role2>
+    <role3>c</role3>
+</GameStatistics>
