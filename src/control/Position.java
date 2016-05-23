@@ -12,8 +12,8 @@ package control;
  */
 public class Position {
 	
-	public final double screenHeight = 700;	/* in pixels */
-	public final double screenWidth = 550;	/* in pixels */
+	public static final double screenHeight = 700;	/* in pixels */
+	public static final double screenWidth = 550;	/* in pixels */
 	
 	public double x;
 	public double y;
@@ -107,4 +107,24 @@ public class Position {
 		}
 		return bReturn;
 	}
+	
+	/**
+	 * returns the value of the screen height
+	 * 
+	 * @return The Heigth of the screen
+	 */
+	public double GetScreenHeight()
+	{
+		return Position.screenHeight;
+	}
+	
+	/**
+	 * returns the value of the screen width
+	 * @return the width of the screen
+	 */
+	public double GetScreenWidth()
+	{
+		return Position.screenWidth;
+	}
 }
+

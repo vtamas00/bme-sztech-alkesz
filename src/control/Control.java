@@ -226,7 +226,7 @@ public class Control{
 		{
 			iteral.remove();
 		}
-		this.currGameState.Plato.ResetPlayer()
+		this.currGameState.Plato.ResetPlayer();
 		this.isGameRunning=true;
 	}
 
