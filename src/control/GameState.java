@@ -109,13 +109,16 @@ public class GameState {
 	}
 
 	public void NPos(double x) {
-		if (x<this.Plato.sizeX/2) {
-			x = this.Plato.sizeX/2;
+		if (x<this.Plato.sizeX/2.0) {
+			this.Plato.NewPos.x = 0;
+		} else 
+		if (x>this.Plato.myPos.GetScreenWidth()-this.Plato.sizeX/2.0) {
+			this.Plato.NewPos.x = this.Plato.myPos.GetScreenWidth()-this.Plato.sizeX;
+		} else 
+		if (x>this.Plato.sizeX/2.0 && x<this.Plato.myPos.GetScreenWidth()-this.Plato.sizeX/2.0)  {
+			this.Plato.NewPos.x = (x-this.Plato.sizeX/2);
 		}
-		if (x>this.Plato.sizeX-this.Plato.sizeX/2) {
-			x = this.Plato.sizeX-this.Plato.sizeX/2;
-		}
-		this.Plato.NewPos.x = (double)(x-this.Plato.sizeX/2);
+		
 	}
 
 	public Player getPlato() {
