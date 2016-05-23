@@ -18,16 +18,21 @@ import control.GameState.Game_Type;
  *
  */
 public class Control{
-	final public int TIME_SAMPLE = 20; /* Default time sample used by the whole game. */
+	/**
+	 * Default time sample used by the whole game. 
+	 */
+	final public int TIME_SAMPLE = 20;
 	
 	private GameState currGameState;
 	private boolean isEvent;
 	private boolean isGameRunning;
 	private long ObjGenCntr=0;
-	public long cntr=0;
+	/**
+	 *  Counter to minimalize the amximum object number per sec.
+	 */
+	public long cntr=0;	
 	
-	
-	
+
 	/*********************** Constructors *************************************/
 	
 	/**
@@ -45,8 +50,6 @@ public class Control{
 	 * ActualizeData function is recalculate every dynamic variable. Has to call
 	 * it in every time stamp.
 	 *
-	 * @param newPosX
-	 *            New position of the player
 	 * @param elapsedTime
 	 *            Elapsed time since the last call - Sampling Time if it is a
 	 *            constant variable.
@@ -76,10 +79,8 @@ public class Control{
 					iteral.remove();
 				} else {
 					// See if object is missed
-					if (Position.screenHeight < currObj.getMyPos().y) {
-						//TODO
-						//FIXME 
-						currGameState.Plato.decreaseHealth();
+					if (Position.screenHeight < currObj.getMyPos().y) { 
+						currGameState.Plato.decreaseHealth();	// The player will lose some amount of health
 						System.out.println("\n\n The object reached the zero point! :\n" + currObj.toString());
 						System.out.println("Player Position:\t" + currGameState.getPlato().getMyPos().toString() +"\n" );
 						iteral.remove(); // remove object
@@ -154,7 +155,15 @@ public class Control{
 	 * This function pause the game, with the start function you can continue it.
 	 */
 	public void Pause(){
-		this.isGameRunning=false;
+		if(this.isGameRunning)
+		{
+			
+		}
+		else
+		{
+			this.isGameRunning=true;
+		}
+		
 	}
 	/**
 	 * Force kill the player, this function will and the game!
@@ -205,6 +214,14 @@ public class Control{
 			}
 		}
 		return bReturn;
+	}
+	
+	/**
+	 * This function triggers the control to clear the game data, so it make the game to restart the game.
+	 */
+	public void RestartGame( )
+	{
+		
 	}
 
 }

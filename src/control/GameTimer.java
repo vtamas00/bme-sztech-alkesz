@@ -3,22 +3,24 @@
  */
 package control;
 
-import java.util.Timer;
-
 /**
- * This calss has to schedule the whole game
+ * This calss has to schedule the whole game.
  * 
  * @author chaah
  *
  */
 public class GameTimer implements Runnable{
+	/**
+	 * Flag that indicates the current state of the game timer.
+	 */
 	boolean isRunning;
 	
 	private Control c;
 	
-	
 	/**
-	 * @param locTimer
+	 * Starts the Game timer.
+	 * 
+	 * @param c
 	 */
 	public GameTimer(Control c) {
 		isRunning=true;

@@ -6,23 +6,50 @@ package control;
 import java.util.ArrayList;
 
 /**
- * @author chaah
- * 
  * This Calss contains every data releated to the game.
+ * 
+ * @author chaah
  *
  */
 public class GameState {
+	/**
+	 * Contains every possible game mode.
+	 * 
+	 * @author chaah
+	 *
+	 */
 	public enum Game_Type{
 		eSinglePlayer, eMultiPlayer, eMenu, eDeveloper
 	}
+	/**
+	 * Contains the possible event which could occure on the side of the player.
+	 * 
+	 * @author chaah
+	 *
+	 */
 	public enum Game_Control_Events{
 		eMouseMovement, eMouceClick
 	}
 	
-	public ArrayList<Food_Drink> FallingObjects; /* List for the objects */
-	public Player Plato; /* The player who has to catch the objects */
-	public Game_Type eGameType;	/* Gma type of the current game */
-	public Game_Control_Events eEvents;	/* Every event that changes the course of the game */
+	/**
+	 * List for the objects
+	 */
+	public ArrayList<Food_Drink> FallingObjects;  
+	/**
+	 * The player who has to catch the objects
+	 */
+	public Player Plato; 
+	/**
+	 * Game type of the current game
+	 */
+	public Game_Type eGameType;	 
+	/**
+	 * Every event that changes the course of the game
+	 */
+	public Game_Control_Events eEvents; 
+	/**
+	 * Just a debug counter
+	 */
 	public long gebugCntr;
 	public GameSettings Settings;
 	

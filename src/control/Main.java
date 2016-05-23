@@ -20,6 +20,9 @@ public class Main {
 	public static void main(String[] args) {
 		
 		System.out.println("Hello MIT");
+		/**
+		 * The gamestate descriptor commonv ariable.
+		 */
 		GameState = new GameState();
 		
 		Control myControl = new Control(GameState);
@@ -29,7 +32,7 @@ public class Main {
 		(new Thread(new GuiTimer(myGui))).start();
 		System.out.println("Good By MIT!");
 		
-		
+		System.out.println("Now test the Stats class....!");
 		
 	}
 }

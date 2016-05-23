@@ -11,13 +11,30 @@ package control;
  * @author Dani
  */
 public class Player {
-	
-	public Position myLastPos;		/* Holds the last position of the player */
-	public Position myPos;		/* Holds the current position of the player */
-	public Position NewPos;	/* Set by the GUI */
+	/**
+	 * Holds the last position of the player
+	 */
+	public Position myLastPos;	
+	/**
+	 * Holds the current position of the player
+	 */
+	public Position myPos;	
+	/**
+	 * Set by the GUI
+	 */
+	public Position NewPos;	
+	/**
+	 * Current blood alcohol level of the player.
+	 */
 	private double myBloodAlcoholRatio;	
 	private int myScore;		
-	private int myHealh;		/* Maximum number of missed objects */
+	/**
+	 * Maximum number of missed objects
+	 */
+	private int myHealh;		
+	/**
+	 * Name of the current player.
+	 */
 	public String myName;
 	
 	/**
@@ -32,6 +49,7 @@ public class Player {
 	public Position getMyPos() {
 		return myPos;
 	}
+	
 	/**
 	 * @param NewPos is set based on derivation of the movement of the 
 	 * player, and the players own blood alcohol ratio.
@@ -51,12 +69,14 @@ public class Player {
 
 		this.myPos.x+=(int)(this.myBloodAlcoholRatio*Math.sqrt(Math.pow(dx0,2)+Math.pow(dx1,2)));
 	}
+	
 	/**
 	 * @return the myBloodAlcoholRatio
 	 */
 	public double getMyBloodAlcoholRatio() {
 		return myBloodAlcoholRatio;
 	}
+	
 	/**
 	 * @param bloodAlcoholRatio will increase myBloodAlcoholRatio
 	 */
@@ -92,6 +112,7 @@ public class Player {
 	private void setMyHealh( ) {
 		this.myHealh = 10;	/* Default value, change here if needed! */
 	}
+	
 	/************************* Constructors ***********************************/
 	
 	public Player( String myName) {

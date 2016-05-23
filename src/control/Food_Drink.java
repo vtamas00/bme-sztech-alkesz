@@ -13,20 +13,44 @@ import java.util.Random;
  */
 public class Food_Drink {
 
+	/**
+	 * Contains the every possible object that the player has to catch.
+	 * 
+	 * @author chaah
+	 *
+	 */
 	public enum Food_Drinks_Type{
 		eGlassOfBeer, ePintOfBeer, eGlassOfVine, eCoctail,
 		eSmallSpirit, eLongSpirit, eHFullofSunfSeed, eHFullofPeanuts,
 		eSliceofPizza, eFattyBoard, eGyros, eHamburger, ePartyTray
 	}
 	
-	public Position myPos;		/* Position of the object */
-	private Food_Drinks_Type myType;	/* Object type */
-	private int mySpeed;		/* [Pixel/ms] */
-	public int mySize;			/* Round shape objects, this is the radius [pixels] */
-	private int myScore;		/* Value of the object */
+	/**
+	 * Position of the object
+	 */
+	public Position myPos;		
+	/**
+	 * Object type
+	 */
+	private Food_Drinks_Type myType;
+	/**
+	 * [Pixel/ms]
+	 */
+	private int mySpeed;		
+	/**
+	 * Round shape objects, this is the radius [pixels]
+	 */
+	public int mySize;			
+	/**
+	 * Value of the object 
+	 */
+	private int myScore;		
 	private int bloodAlcoholRatio; 
 	private int special;
-	public int timeInGame;		/* This variable indicates that how old it this object is. */
+	/**
+	 * This variable indicates that how old it this object is.
+	 */
+	public int timeInGame;
 	
 	/**
 	 * @return the myPos
@@ -498,7 +522,6 @@ public class Food_Drink {
 	 * random number to determine the type of the object. The low value objects are closer to the
 	 * mean value and the higher value objects are far from the mean value.
 	 * 
-	 * @return
 	 */
 	public Food_Drinks_Type RandomType( )
 	{
