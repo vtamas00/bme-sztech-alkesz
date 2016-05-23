@@ -157,7 +157,7 @@ public class Control{
 	public void Pause(){
 		if(this.isGameRunning)
 		{
-			
+			this.isGameRunning=false;
 		}
 		else
 		{

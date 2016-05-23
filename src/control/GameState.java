@@ -32,26 +32,50 @@ public class GameState {
 	}
 	
 	/**
+	 * Server or host mode of the multi game.
+	 * 
+	 * @author chaah
+	 *
+	 */
+	public enum Game_Place
+	{
+		eServer, eHost	
+	}
+	
+	/**
 	 * List for the objects
 	 */
 	public ArrayList<Food_Drink> FallingObjects;  
+	
 	/**
 	 * The player who has to catch the objects
 	 */
 	public Player Plato; 
+	
 	/**
 	 * Game type of the current game
 	 */
 	public Game_Type eGameType;	 
+	
 	/**
 	 * Every event that changes the course of the game
 	 */
 	public Game_Control_Events eEvents; 
+	
 	/**
 	 * Just a debug counter
 	 */
 	public long gebugCntr;
+	
+	/**
+	 * Game setting...
+	 */
 	public GameSettings Settings;
+	
+	/**
+	 * Location type of the current game.
+	 */
+	public Game_Place eGameLocationType;
 	
 	public GameState () {
 		this.eGameType = Game_Type.eMenu;
@@ -68,7 +92,7 @@ public class GameState {
 		this.Plato.NewPos.x = (double)(this.Settings.SizeX/2-this.Settings.PlatoSizeX/2);
 		this.Plato.NewPos.y = (double)(this.Settings.SizeY-this.Settings.PlatoSizeY);
 		this.Plato.myPos = this.Plato.NewPos;
-
+		this.eGameLocationType = Game_Place.eServer;
 	}
 	
 	public GameState( String myName, Game_Type eGameType )
