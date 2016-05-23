@@ -67,10 +67,6 @@ public class GameState {
 	 */
 	public long gebugCntr;
 	
-	/**
-	 * Game setting...
-	 */
-	public GameSettings Settings;
 	
 	/**
 	 * Location type of the current game.
@@ -84,8 +80,8 @@ public class GameState {
 		gebugCntr=0;
 		
 		this.Plato.NewPos = new Position();
-		this.Plato.NewPos.x = (double)(this.Plato.sizeX/2-this.Plato.myPos.screenWidth/2);
-		this.Plato.NewPos.y = (double)(this.Plato.sizeY-this.Plato.myPos.screenHeight);
+		this.Plato.NewPos.x = (double)(Position.screenWidth/2-this.Plato.sizeX/2);
+		this.Plato.NewPos.y = (double)(Position.screenHeight-this.Plato.sizeY);
 		this.Plato.myPos = this.Plato.NewPos;
 		this.eGameLocationType = Game_Place.eServer;
 	}

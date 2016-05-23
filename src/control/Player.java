@@ -180,10 +180,10 @@ public class Player {
 	public void ResetPlayer()
 	{
 		this.myHealh=maxHealth;
-		this.myBloodAlcoholRatio=0;
+		this.myBloodAlcoholRatio=1;
 		this.myScore=0;
-		this.NewPos.x = (double)(this.sizeX/2-this.myPos.screenWidth/2);
-		this.NewPos.y = (double)(this.sizeY-this.myPos.screenHeight);
+		this.NewPos.x = (double)(this.sizeX/2-new Position().screenWidth/2);
+		this.NewPos.y = (double)(this.sizeY-new Position().screenHeight);
 		this.myLastPos=this.NewPos;
 		this.myPos=this.NewPos;
 		
