@@ -221,7 +221,13 @@ public class Control{
 	 */
 	public void RestartGame( )
 	{
-		
+		Iterator iteral = currGameState.FallingObjects.iterator();
+		while(iteral.hasNext())
+		{
+			iteral.remove();
+		}
+		this.currGameState.Plato.setMyBloodAlcoholRatio(0);
+		this.isGameRunning=true;
 	}
 
 }

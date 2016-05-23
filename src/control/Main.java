@@ -21,7 +21,7 @@ public class Main {
 		
 		System.out.println("Hello MIT");
 		/**
-		 * The gamestate descriptor commonv ariable.
+		 * The gamestate descriptor common variable.
 		 */
 		GameState = new GameState();
 		

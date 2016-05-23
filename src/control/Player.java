@@ -12,6 +12,15 @@ package control;
  */
 public class Player {
 	/**
+	 * Size of the player in the X dimension.
+	 */
+	public final int sizeY = 25; 
+	/**
+	 * Size of the player in the Y dimension.
+	 */
+	public final int sizeX = 75;
+	
+	/**
 	 * Holds the last position of the player
 	 */
 	public Position myLastPos;	
@@ -49,6 +58,7 @@ public class Player {
 	public Position getMyPos() {
 		return myPos;
 	}
+	
 	
 	/**
 	 * @param NewPos is set based on derivation of the movement of the 
@@ -160,5 +170,14 @@ public class Player {
 				+ ", myScore=" + myScore + ", myHealh=" + myHealh + "]";
 	}
 
-
+	/**
+	 * This function resets the player parameters
+	 */
+	public void ResetPlayer()
+	{
+		this.myHealh=10;
+		this.myBloodAlcoholRatio=0;
+		this.myScore=0;
+		
+	}
 }

@@ -82,15 +82,10 @@ public class GameState {
 		this.Plato = new Player( "CunciSquirrel" );
 		this.FallingObjects = new ArrayList<Food_Drink>();
 		gebugCntr=0;
-		this.Settings = new GameSettings();
-		this.Settings.SizeX = 550;
-		this.Settings.SizeY = 700;
-		this.Settings.PlatoSizeX = 110;
-		this.Settings.PlatoSizeY = 25;
 		
 		this.Plato.NewPos = new Position();
-		this.Plato.NewPos.x = (double)(this.Settings.SizeX/2-this.Settings.PlatoSizeX/2);
-		this.Plato.NewPos.y = (double)(this.Settings.SizeY-this.Settings.PlatoSizeY);
+		this.Plato.NewPos.x = (double)(this.Plato.sizeX/2-this.Plato.myPos.screenWidth/2);
+		this.Plato.NewPos.y = (double)(this.Plato.sizeY-this.Plato.myPos.screenHeight);
 		this.Plato.myPos = this.Plato.NewPos;
 		this.eGameLocationType = Game_Place.eServer;
 	}
