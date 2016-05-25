@@ -186,8 +186,9 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		
 		
 		// Draw cover
-		overlay.setColor(Color.white);
-		overlay.fillRect(0, 0, (int)g.Plato.myPos.GetScreenWidth(), 0);	
+		overlay.setColor(Color.green);
+		int coverRatio = (int) (g.Plato.myPos.GetScreenHeight()*(int)g.Plato.getMyBloodAlcoholRatio()/80);
+		overlay.fillRect(0, 0, (int)g.Plato.myPos.GetScreenWidth(), coverRatio);	
 
 		
 		

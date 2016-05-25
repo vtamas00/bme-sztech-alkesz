@@ -60,7 +60,7 @@ public class Gui extends JFrame {
 		// setSize(400, 550);
 		setTitle("BME MIT Sztech :: Alkesz");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(true);
+		setResizable(false);
 
 		GridBagConstraints gbc = new GridBagConstraints();
 		MainMenuPanel.setLayout(new GridBagLayout());
@@ -131,7 +131,7 @@ public class Gui extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Object[] possibilities = {"Easy", "Medium", "Hardcore"};
+				Object[] possibilities = {"Easy", "Normal", "Hardcore","Insane"};
 				int level = JOptionPane.showOptionDialog(null, "Please set the game level", "Settings",
 				        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
 				        null, possibilities, possibilities[0]);
@@ -145,11 +145,14 @@ public class Gui extends JFrame {
 		// MultiGamePanel.add(sw4);
 		// MultiGamePanel.add(sw5);
 
+		// Main menu button
 		sw2.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainLayout.show(ContainerPanel, "MMP");
+				c.Pause();
+				c.RestartGame();
 
 			}
 		});
