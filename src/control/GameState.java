@@ -81,6 +81,11 @@ public class GameState {
 	 */
 	public Game_Difficulty eGameDiff;
 	
+	/**
+	 * This array hold the current game statistics... 
+	 */
+	public ArrayList<Stats> gameStats;  
+	
 	
 	/**
 	 * Location type of the current game.

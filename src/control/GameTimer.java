@@ -45,6 +45,13 @@ public class GameTimer implements Runnable{
 					{
 						g.ReDrawAll();
 					}
+					else
+					{
+						if(c.currGameState.Plato.getMyHealh()<=0)
+						{
+							g.EndGameEvent();
+						}
+					}
 				}
 				Thread.sleep(c.TIME_SAMPLE);
 			}

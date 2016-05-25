@@ -22,7 +22,7 @@ public class Control{
 	 * Default time sample used by the whole game. 
 	 */
 	final public int TIME_SAMPLE = 20;
-	private GameState currGameState;
+	public GameState currGameState;
 	private boolean isEvent;
 	public boolean isGameRunning;
 	private long ObjGenCntr=0;
@@ -227,6 +227,13 @@ public class Control{
 			if( 0>= currGameState.Plato.getMyHealh())
 			{
 				bReturn=false;
+				// The game end here
+				Stats myStats = new Stats();
+				myStats.bloodAlcoholLevel=this.currGameState.Plato.getMyBloodAlcoholRatio();
+				myStats.duration=(int) this.currGameState.gebugCntr;
+				myStats.name=this.currGameState.Plato.myName;
+				myStats.score=this.currGameState.Plato.getMyScore();
+				this.currGameState.gameStats.add(myStats);
 			}
 		}
 		else
