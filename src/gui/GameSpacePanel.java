@@ -166,7 +166,7 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		
 		for (Food_Drink item : g.FallingObjects ) {
 			// g2d.fillOval((int)item.myPos.x-item.mySize/2, (int)item.myPos.y-item.mySize/2, item.mySize, item.mySize);
-			overlay.drawImage(imageOfFoodDring(item.getMyType()), (int)item.myPos.x-item.mySize/2, (int)item.myPos.y-item.mySize/2, item.mySize*4, item.mySize*4, this);
+			overlay.drawImage(imageOfFoodDring(item.getMyType()), (int)item.myPos.x-item.mySize/2, (int)item.myPos.y-item.mySize/2, item.mySize, item.mySize, this);
 		}
 
 		
