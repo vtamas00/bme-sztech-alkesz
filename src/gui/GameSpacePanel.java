@@ -19,6 +19,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * This class is responsible for the game space.
+ */
 
 public class GameSpacePanel extends JPanel implements MouseMotionListener {
 
@@ -30,6 +33,7 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 	private Control c;
 	private boolean ShowGS;
 	
+	// The images will load to this objects
 	private BufferedImage pia1,pia2,pia3,pia4,pia5,kv,udito;
 	private BufferedImage kaja1,kaja2,kaja3,kaja4,kaja5,hamb;
 
@@ -42,9 +46,12 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		loadAllImages();
 			}
 	
-	
+	/**
+	 * Load all Image when the game is starting.
+	 */	
 	private void loadAllImages() {
-        try {
+
+		try {
         
         	resource = getClass().getResource("images/pia1.png");
         	pia1 = ImageIO.read(resource);
@@ -179,8 +186,9 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		
 		
 		// Draw cover
-		overlay.setColor(Color.white);
-		overlay.fillRect(0, 0, (int)g.Plato.myPos.GetScreenWidth(), 0);	
+		overlay.setColor(Color.green);
+		int coverRatio = (int) (g.Plato.myPos.GetScreenHeight()*(int)g.Plato.getMyBloodAlcoholRatio()/80);
+		overlay.fillRect(0, 0, (int)g.Plato.myPos.GetScreenWidth(), coverRatio);	
 
 		
 		
@@ -259,12 +267,6 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 	}
 
 
-	public String foodDrinkFileName(Food_Drinks_Type obj) {
-		String fileName = "";
-		
-
-		return fileName;
-	}
 
 	@Override
 	public void mouseDragged(MouseEvent evt) {
