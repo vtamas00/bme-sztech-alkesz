@@ -241,7 +241,7 @@ public class Control{
 	/**
 	 * This function triggers the control to clear the game data, so it make the game to restart the game.
 	 */
-	public void RestartGame( )
+	public void resetGame( )
 	{
 		try
 		{
@@ -257,7 +257,6 @@ public class Control{
 			this.currGameState.Plato.ResetPlayer();
 			this.currGameState.gebugCntr=0;
 			this.ObjGenCntr=0;
-			this.isGameRunning=true;
 		}
 		catch (InterruptedException e)
 		{

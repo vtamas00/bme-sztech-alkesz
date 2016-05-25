@@ -173,7 +173,7 @@ public class Gui extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainLayout.show(ContainerPanel, "MMP");
 				g.eGameType = Game_Type.eMenu;
-				c.RestartGame();
+				c.resetGame();
 
 			}
 		});
@@ -192,7 +192,7 @@ public class Gui extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				c.RestartGame();
+				c.resetGame();
 			}
 		});
 
