@@ -22,10 +22,9 @@ public class Control{
 	 * Default time sample used by the whole game. 
 	 */
 	final public int TIME_SAMPLE = 20;
-	
 	private GameState currGameState;
 	private boolean isEvent;
-	private boolean isGameRunning;
+	public boolean isGameRunning;
 	private long ObjGenCntr=0;
 	/**
 	 *  Counter to minimalize the amximum object number per sec.
