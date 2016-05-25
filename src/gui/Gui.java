@@ -51,6 +51,9 @@ public class Gui extends JFrame {
 		SingleGamePanel.setGameState(gameState);
 		SingleGamePanel.setControl(control);
 
+		MultiGamePanel.setGameState(gameState);
+		MultiGamePanel.setControl(control);
+
 		// setSize(400, 550);
 		setTitle("BME MIT Sztech :: Alkesz");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -90,7 +93,7 @@ public class Gui extends JFrame {
 		ContainerPanel.add(MainMenuPanel, "MMP");
 		ContainerPanel.add(SingleGamePanel, "SGP");
 		ContainerPanel.add(MultiGamePanel, "MGP");
-		ContainerPanel.setPreferredSize(new Dimension((int)g.Plato.myPos.GetScreenWidth(), (int)g.Plato.myPos.GetScreenHeight()));
+		ContainerPanel.setPreferredSize(new Dimension((int)g.Plato.myPos.GetScreenWidth(), (int)g.Plato.myPos.GetScreenHeight()+60));
 
 		MainLayout.show(ContainerPanel, "MMP");
 
@@ -116,6 +119,9 @@ public class Gui extends JFrame {
 
 		SingleGamePanel.add(sw4);
 		SingleGamePanel.add(sw5);
+
+		// MultiGamePanel.add(sw4);
+		// MultiGamePanel.add(sw5);
 
 		sw2.addActionListener(new ActionListener() {
 
@@ -158,6 +164,10 @@ public class Gui extends JFrame {
 		if (g.eGameType == Game_Type.eSinglePlayer) {
 			SingleGamePanel.repaint();
 		}
-	}
+
+		if (g.eGameType == Game_Type.eMultiPlayer) {
+			SingleGamePanel.repaint();
+		}
+}
 
 }
