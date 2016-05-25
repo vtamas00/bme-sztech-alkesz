@@ -12,8 +12,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import control.Control;
 import control.GameState;
@@ -26,6 +28,7 @@ public class Gui extends JFrame {
 	Dimension gridSize = new Dimension(300, 90);
 
 	JLabel bWelcome = new JLabel("Main menu");
+	JLabel bUserName = new JLabel();
 	JButton bSinglePlayer = new JButton("Single Player");
 	JButton bMultiPlayer = new JButton("Multi Player");
 	JButton bSettings = new JButton("Settings");
@@ -64,13 +67,20 @@ public class Gui extends JFrame {
 
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.insets = new Insets(6, 6, 6, 6);
-
+		
+		g.Plato.myName = JOptionPane.showInputDialog(this,"What is your username?", "HappyUser");
+		bUserName.setText("Welcome " + g.Plato.myName + "!");
+		
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		bWelcome.setPreferredSize(gridSize);
 		bWelcome.setFont(new Font("Serif", Font.BOLD, 35));
 		bWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		MainMenuPanel.add(bWelcome, gbc);
+		bUserName.setBorder(new EmptyBorder(60,00,0,0));
+		bUserName.setHorizontalAlignment(SwingConstants.CENTER);
+		MainMenuPanel.add(bUserName, gbc);
+		
 		gbc.gridy = 1;
 		bSinglePlayer.setPreferredSize(gridSize);
 		MainMenuPanel.add(bSinglePlayer, gbc);
@@ -116,6 +126,18 @@ public class Gui extends JFrame {
 				c.StartGame();				
 			}
 		});
+		
+		bSettings.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Object[] possibilities = {"Easy", "Medium", "Hardcore"};
+				int level = JOptionPane.showOptionDialog(null, "Please set the game level", "Settings",
+				        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+				        null, possibilities, possibilities[0]);
+				
+			}
+		});
 
 		SingleGamePanel.add(sw4);
 		SingleGamePanel.add(sw5);
@@ -148,7 +170,7 @@ public class Gui extends JFrame {
 			}
 		});
 
-		
+				
 		add(ContainerPanel);
 		setLayout(MainLayout);
 		pack();
