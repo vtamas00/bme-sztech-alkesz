@@ -42,7 +42,7 @@ public class GameTimer implements Runnable{
 				isRunning=c.RefreshData();
 				if(isRunning)
 				{
-					g.repaint();
+					g.ReDrawAll();
 				}
 				Thread.sleep(c.TIME_SAMPLE);
 				

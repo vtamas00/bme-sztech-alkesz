@@ -94,8 +94,8 @@ public class Position {
 		double playerLow[] = {playerPos.x-dummyPLayer.sizeX/2, playerPos.y+dummyPLayer.sizeY/2};
 		double plyaerHigh[] = {playerPos.x+dummyPLayer.sizeX/2, playerPos.y+dummyPLayer.sizeY/2};
 		
-		System.out.println("aLow[0]" + aLow[0] + ",aLow[1]" + aLow[1] +", aHigh[0]" + aHigh[0] +", aHigh[1]" + aHigh[1]);
-		System.out.println("playerLow[0]" + playerLow[0] + ",playerLow[1]" + playerLow[1] +", plyaerHigh[0]" + plyaerHigh[0] +", plyaerHigh[1]" + plyaerHigh[1]+"...");
+//		System.out.println("aLow[0]" + aLow[0] + ",aLow[1]" + aLow[1] +", aHigh[0]" + aHigh[0] +", aHigh[1]" + aHigh[1]);
+//		System.out.println("playerLow[0]" + playerLow[0] + ",playerLow[1]" + playerLow[1] +", plyaerHigh[0]" + plyaerHigh[0] +", plyaerHigh[1]" + plyaerHigh[1]+"...");
 		
 		// Check the interval overlap
 		if( playerLow[1] < aHigh[1] )

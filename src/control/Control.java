@@ -112,10 +112,26 @@ public class Control{
 	 */
 	public void GenerateObjectsRandom( )
 	{
+		double objGenSpeed;
 		// Need here some refactor 
 		ObjGenCntr++;
-		//TODO Increase object number if the blood level goes higher, for example in every 10% decrease the 100 by some value, depended on the game mode.
-		if( ObjGenCntr > 100)
+		objGenSpeed=this.currGameState.Plato.getMyBloodAlcoholRatio()/5;
+		switch(this.currGameState.eGameDiff){
+		case eEasy:
+			objGenSpeed=120-8*objGenSpeed;
+			break;
+		case eNormal:
+			objGenSpeed=120-9*objGenSpeed;
+			break;
+		case eHard:
+			objGenSpeed=120-10*objGenSpeed;
+			break;
+		case eInsane:
+			objGenSpeed=100-10*objGenSpeed;
+			break;
+		}
+//		System.out.println("objGenSpeed :" + objGenSpeed);
+		if( ObjGenCntr > objGenSpeed)
 		{
 			Random rand = new Random();
 			double newPosX = rand.nextDouble() * Position.screenWidth +1;
@@ -224,7 +240,7 @@ public class Control{
 		try
 		{
 			this.isGameRunning=false;
-			Thread.sleep(30);
+			Thread.sleep(100);
 			Iterator iteral = currGameState.FallingObjects.iterator();
 			while(iteral.hasNext())
 			{
