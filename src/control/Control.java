@@ -233,7 +233,7 @@ public class Control{
 				myStats.duration=(int) this.currGameState.gebugCntr;
 				myStats.name=this.currGameState.Plato.myName;
 				myStats.score=this.currGameState.Plato.getMyScore();
-				this.currGameState.gameStats.add(myStats);
+				this.currGameState.addStats(myStats);
 			}
 		}
 		else

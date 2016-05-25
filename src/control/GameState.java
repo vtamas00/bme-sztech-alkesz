@@ -97,13 +97,14 @@ public class GameState {
 		this.Plato = new Player( "CunciSquirrel" );
 		this.FallingObjects = new ArrayList<Food_Drink>();
 		gebugCntr=0;
-		
+		this.gameStats =new ArrayList<Stats>();
 		this.Plato.NewPos = new Position();
 		this.Plato.NewPos.x = (double)(Position.screenWidth/2-this.Plato.sizeX/2);
 		this.Plato.NewPos.y = (double)(Position.screenHeight-this.Plato.sizeY);
 		this.Plato.myPos = this.Plato.NewPos;
 		this.eGameLocationType = Game_Place.eServer;
 		this.eGameDiff = Game_Difficulty.eEasy;
+		
 	}
 	
 	public GameState( String myName, Game_Type eGameType )
@@ -121,6 +122,11 @@ public class GameState {
 		FallingObjects.add(fallingObjects);
 	}
 
+	
+	public void addStats(final Stats newStat){
+		gameStats.add(newStat);
+	}
+	
 	/**
 	 * @return the fallingObjects
 	 */

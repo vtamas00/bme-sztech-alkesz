@@ -44,7 +44,7 @@ public class Player {
 	/**
 	 * Maximum number of missed objects
 	 */
-	private int myHealh;		
+	public int myHealh;		
 	/**
 	 * Name of the current player.
 	 */

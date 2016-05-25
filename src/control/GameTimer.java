@@ -50,6 +50,7 @@ public class GameTimer implements Runnable{
 						if(c.currGameState.Plato.getMyHealh()<=0)
 						{
 							g.EndGameEvent();
+							c.currGameState.Plato.myHealh=1;
 						}
 					}
 				}
