@@ -249,14 +249,19 @@ public class Control{
 			Thread.sleep(100);
 			Iterator iteral = currGameState.FallingObjects.iterator();
 			while(iteral.hasNext())
-			{
-//				iteral.remove();
+			{ 
+				iteral.next();
+				iteral.remove();
+
 			}
 			this.currGameState.Plato.ResetPlayer();
+			this.currGameState.gebugCntr=0;
+			this.ObjGenCntr=0;
 			this.isGameRunning=true;
 		}
 		catch (InterruptedException e)
 		{
+			System.out.println("problem");
 			e.printStackTrace();
 		}
 	}
