@@ -34,6 +34,7 @@ public class Gui extends JFrame {
 	JButton bMultiPlayer = new JButton("Multi Player");
 	JButton bSettings = new JButton("Settings");
 	JButton bStatistics = new JButton("Statistics");
+	JButton bChangeUser = new JButton("Change user");
 
 	JButton sw2 = new JButton("Main menu");
 	JButton sw3 = new JButton("Main menu");
@@ -47,6 +48,12 @@ public class Gui extends JFrame {
 
 	private GameState g;
 	private Control c;
+	
+	public void chageUserNameDialog() {
+		g.Plato.myName = JOptionPane.showInputDialog(this,"What is your username?", "SadUser");
+		bUserName.setText("Welcome " + g.Plato.myName + "!");
+		this.repaint();
+	}
 
 	public Gui(GameState gameState, Control control) {
 
@@ -67,7 +74,7 @@ public class Gui extends JFrame {
 		MainMenuPanel.setLayout(new GridBagLayout());
 
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.insets = new Insets(6, 6, 6, 6);
+		gbc.insets = new Insets(7, 7, 7, 7);
 		
 		g.Plato.myName = JOptionPane.showInputDialog(this,"What is your username?", "HappyUser");
 		bUserName.setText("Welcome " + g.Plato.myName + "!");
@@ -94,6 +101,9 @@ public class Gui extends JFrame {
 		gbc.gridy = 4;
 		bStatistics.setPreferredSize(gridSize);
 		MainMenuPanel.add(bStatistics, gbc);
+		gbc.gridy = 5;
+		bChangeUser.setPreferredSize(gridSize);
+		MainMenuPanel.add(bChangeUser, gbc);
 
 		SingleGamePanel.add(sw2);
 		MultiGamePanel.add(sw3);
@@ -193,6 +203,15 @@ public class Gui extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				c.resetGame();
+			}
+		});
+		
+		bChangeUser.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				chageUserNameDialog();
+				
 			}
 		});
 
