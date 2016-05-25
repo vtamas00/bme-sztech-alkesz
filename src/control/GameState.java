@@ -41,6 +41,15 @@ public class GameState {
 	{
 		eServer, eHost	
 	}
+	/**
+	 * Different game difficulties of the game.
+	 * @author chaah
+	 *
+	 */
+	public enum Game_Difficulty
+	{
+		eEasy, eNormal, eHard, eInsane
+	}
 	
 	/**
 	 * List for the objects
@@ -67,6 +76,11 @@ public class GameState {
 	 */
 	public long gebugCntr;
 	
+	/**
+	 * Variable to the set the game difficulty
+	 */
+	public Game_Difficulty eGameDiff;
+	
 	
 	/**
 	 * Location type of the current game.
@@ -84,6 +98,7 @@ public class GameState {
 		this.Plato.NewPos.y = (double)(Position.screenHeight-this.Plato.sizeY);
 		this.Plato.myPos = this.Plato.NewPos;
 		this.eGameLocationType = Game_Place.eServer;
+		this.eGameDiff = Game_Difficulty.eEasy;
 	}
 	
 	public GameState( String myName, Game_Type eGameType )

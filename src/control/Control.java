@@ -115,6 +115,7 @@ public class Control{
 	{
 		// Need here some refactor 
 		ObjGenCntr++;
+		//TODO Increase object number if the blood level goes higher, for example in every 10% decrease the 100 by some value, depended on the game mode.
 		if( ObjGenCntr > 100)
 		{
 			Random rand = new Random();
@@ -221,13 +222,22 @@ public class Control{
 	 */
 	public void RestartGame( )
 	{
-		Iterator iteral = currGameState.FallingObjects.iterator();
-		while(iteral.hasNext())
+		try
 		{
-			iteral.remove();
+			this.isGameRunning=false;
+			Thread.sleep(30);
+			Iterator iteral = currGameState.FallingObjects.iterator();
+			while(iteral.hasNext())
+			{
+				iteral.remove();
+			}
+			this.currGameState.Plato.ResetPlayer();
+			this.isGameRunning=true;
 		}
-		this.currGameState.Plato.ResetPlayer();
-		this.isGameRunning=true;
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }

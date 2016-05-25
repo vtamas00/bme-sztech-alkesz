@@ -28,7 +28,7 @@ public class Main {
 		Control myControl = new Control(GameState);
 		Gui	myGui = new Gui(GameState,myControl);
 
-		(new Thread(new GameTimer(myControl))).start();
+		(new Thread(new GameTimer(myControl,myGui))).start();
 		(new Thread(new GuiTimer(myGui))).start();
 		System.out.println("Good By MIT!");
 		

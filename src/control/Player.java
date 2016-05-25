@@ -182,8 +182,8 @@ public class Player {
 		this.myHealh=maxHealth;
 		this.myBloodAlcoholRatio=1;
 		this.myScore=0;
-		this.NewPos.x = (double)(this.sizeX/2-new Position().screenWidth/2);
-		this.NewPos.y = (double)(this.sizeY-new Position().screenHeight);
+		this.NewPos.x = (double)(Position.screenWidth/2-this.sizeX/2);
+		this.NewPos.y = (double)(Position.screenHeight-this.sizeY);
 		this.myLastPos=this.NewPos;
 		this.myPos=this.NewPos;
 	}
