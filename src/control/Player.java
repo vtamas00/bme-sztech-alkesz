@@ -14,11 +14,11 @@ public class Player {
 	/**
 	 * Size of the player in the X dimension.
 	 */
-	public final int sizeY = 25; 
+	public final int sizeY = 15; 
 	/**
 	 * Size of the player in the Y dimension.
 	 */
-	public final int sizeX = 75;
+	public final int sizeX = 60;
 	/**
 	 * Initil health of the player.
 	 */
@@ -186,6 +186,5 @@ public class Player {
 		this.NewPos.y = (double)(this.sizeY-new Position().screenHeight);
 		this.myLastPos=this.NewPos;
 		this.myPos=this.NewPos;
-		
 	}
 }

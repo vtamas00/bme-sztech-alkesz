@@ -118,7 +118,6 @@ public class GameState {
 		if (x>this.Plato.sizeX/2.0 && x<this.Plato.myPos.GetScreenWidth()-this.Plato.sizeX/2.0)  {
 			this.Plato.NewPos.x = (x-this.Plato.sizeX/2);
 		}
-		
 	}
 
 	public Player getPlato() {

@@ -270,75 +270,76 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.mySize = 3;
+				this.mySize = 2;
 				break;
 			}
 			case eGlassOfBeer:
 			{
-				this.mySize = 20;
+				this.mySize = 10;
 				break;
 			}
 			case ePintOfBeer:
 			{
-				this.mySize = 18;
+				this.mySize = 8;
 				break;
 			}
 			case eGlassOfVine:
 			{
-				this.mySize = 15;
+				this.mySize = 7;
 				break;
 			}
 			case eCoctail:
 			{
-				this.mySize = 10;
+				this.mySize = 6;
 				break;
 			}
 			case eSmallSpirit:
 			{
-				this.mySize = 7;
+				this.mySize = 5;
 				break;
 			}
 			case eLongSpirit:
 			{
-				this.mySize = 5;
+				this.mySize = 4;
 				break;
 			}
 			case eHFullofSunfSeed:
 			{
-				this.mySize = 20;
+				this.mySize = 10;
 				break;
 			}
 			case eHFullofPeanuts:
 			{
-				this.mySize = 15;
+				this.mySize = 8;
 				break;
 			}
 			case eFattyBoard:
 			{
-				this.mySize = 13;
+				this.mySize = 7;
 				break;
 			}
 			case eSliceofPizza:
 			{
-				this.mySize = 10;
+				this.mySize = 6;
 				break;
 			}
 			case eGyros:
 			{
-				this.mySize = 7;
+				this.mySize = 5;
 				break;
 			}
 			case eHamburger:
 			{
-				this.mySize = 5;
+				this.mySize = 4;
 				break;
 			}
 			default:
 			{
-				this.mySize = 3;
+				this.mySize = 2;
 				break;
 			}
 		} // switch
+		this.mySize=4*this.mySize;
 	}
 	/**
 	 * @return the myScore

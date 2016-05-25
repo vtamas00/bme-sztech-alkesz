@@ -12,8 +12,8 @@ package control;
  */
 public class Position {
 	
-	public static final double screenHeight = 700;	/* in pixels */
-	public static final double screenWidth = 550;	/* in pixels */
+	public static final double screenHeight = 600;	/* in pixels */
+	public static final double screenWidth = 450;	/* in pixels */
 	
 	public double x;
 	public double y;
@@ -80,29 +80,32 @@ public class Position {
 	 * common area they are "equal".
 	 * 
 	 * @param posA position to compare
-	 * @param posB position to compare
+	 * @param playerPos position to compare
 	 * @param compareValue possible values: [0,1]
 	 * @param areaFactor determines the area around the positions
 	 * @return true if the the 2 position has matching radius
 	 */
-	public Boolean isPosAequalsPosB(Position posA, Position posB, double compareValue, int areaFactor) {
+	public Boolean isPosAequalsPosB(Position posA, Position playerPos, double compareValue, int areaFactor) {
 		Boolean bReturn=false;
-//		double factor = areaFactor*(1-compareValue);
-//		double factor = Math.pow(1.5,areaFactor)*compareValue;
+		Player dummyPLayer = new Player("def");
 		double factor = areaFactor;
-		double aLow[] = {posA.x-factor, posA.y-factor};
+		double aLow[] = {posA.x-factor, posA.y+factor};
 		double aHigh[] = {posA.x+factor, posA.y+factor};
-		double bLow[] = {posB.x-factor, posB.y-factor};
-		double bHigh[] = {posB.x+factor, posB.y+factor};
+		double playerLow[] = {playerPos.x-dummyPLayer.sizeX/2, playerPos.y+dummyPLayer.sizeY/2};
+		double plyaerHigh[] = {playerPos.x+dummyPLayer.sizeX/2, playerPos.y+dummyPLayer.sizeY/2};
+		
+		System.out.println("aLow[0]" + aLow[0] + ",aLow[1]" + aLow[1] +", aHigh[0]" + aHigh[0] +", aHigh[1]" + aHigh[1]);
+		System.out.println("playerLow[0]" + playerLow[0] + ",playerLow[1]" + playerLow[1] +", plyaerHigh[0]" + plyaerHigh[0] +", plyaerHigh[1]" + plyaerHigh[1]+"...");
 		
 		// Check the interval overlap
-		if( (aLow[0] >= bHigh[0]) && (aHigh[0] >= bLow[0]) )
+		if( playerLow[1] < aHigh[1] )
 		{
-			// The x coordinate is overlap
-			if( (aLow[1] >= bHigh[1]) && (aHigh[1] >= bLow[1]) )
+			// The object lower part is reached the player central position.
+			if( (aLow[0] <= plyaerHigh[0]) && (playerLow[0] <= aHigh[0]) )
 			{
-				// The y coordinate is overlap
+				// The x coordinate is overlap
 				bReturn=true;
+
 			}
 		}
 		return bReturn;
