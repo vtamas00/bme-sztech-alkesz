@@ -124,6 +124,7 @@ public class Gui extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainLayout.show(ContainerPanel, "SGP");
 				g.eGameType = Game_Type.eSinglePlayer;
+				c.resetGame();
 				c.StartGame();
 				
 			}
@@ -135,6 +136,7 @@ public class Gui extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainLayout.show(ContainerPanel, "MGP");
 				g.eGameType = Game_Type.eMultiPlayer;
+				c.resetGame();
 				c.StartGame();				
 			}
 		});
@@ -185,6 +187,7 @@ public class Gui extends JFrame {
 				MainLayout.show(ContainerPanel, "MMP");
 				g.eGameType = Game_Type.eMenu;
 				c.resetGame();
+				c.Pause();
 
 			}
 		});
@@ -195,7 +198,7 @@ public class Gui extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				c.Pause();
-				EndGameEvent();
+				// EndGameEvent();
 			}
 
 		});
@@ -230,6 +233,7 @@ public class Gui extends JFrame {
 		this.MainLayout.show(ContainerPanel, "MMP");
 		g.eGameType = Game_Type.eMenu;
 		String infoMessage = "";
+		c.Pause();
 		
 		long time_sec;
 		long time_min;
