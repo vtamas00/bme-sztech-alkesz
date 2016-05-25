@@ -192,7 +192,6 @@ public class Gui extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				g.eGameType = Game_Type.eMenu;
 				c.RestartGame();
 			}
 		});
