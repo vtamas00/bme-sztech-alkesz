@@ -195,7 +195,9 @@ public class Gui extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				c.Pause();
+				EndGameEvent();
 			}
+
 		});
 
 		// Restart button
@@ -229,7 +231,28 @@ public class Gui extends JFrame {
 		g.eGameType = Game_Type.eMenu;
 		String infoMessage = "";
 		
-		infoMessage = "Congratulation! You are almost the best!\nYour score: " + g.Plato.getMyScore() + "\nGame time: 0:00\nBlood percent: " + g.Plato.getMyBloodAlcoholRatio();
+		long time_sec;
+		long time_min;
+		
+		String zero_min = "0";
+		String zero_sec = "0";
+		
+		time_min = (this.g.gebugCntr/50) / 60;
+		time_sec = (this.g.gebugCntr/50) % 60;
+		
+		if (time_min < 10) {
+			zero_min = "0";
+		} else {
+			zero_min = "";
+		}
+		
+		if (time_sec < 10) {
+			zero_sec = "0";
+		} else {
+			zero_sec = ""; 	
+		}
+		
+		infoMessage = "Congratulation! You are almost the best!\nYour score: " + g.Plato.getMyScore() + "\nGame time: "+zero_min + time_min + ":" + zero_sec + time_sec+"\nBlood percent: " + g.Plato.getMyBloodAlcoholRatio() + "%\nLevel: "+ g.eGameDiff;
 		
 		JOptionPane.showMessageDialog(this, infoMessage);
 	}
