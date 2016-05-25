@@ -216,7 +216,7 @@ public class Control{
 	public boolean RefreshData()
 	{
 		boolean bReturn = true;
-		if( true == this.isGameRunning )
+		if(this.isGameRunning )
 		{
 			currGameState.gebugCntr++;
 			GenerateObjectsRandom();
@@ -229,6 +229,12 @@ public class Control{
 				bReturn=false;
 			}
 		}
+		else
+		{
+			bReturn=false;
+		}
+		//FIXME .....
+		
 		return bReturn;
 	}
 	
@@ -244,7 +250,7 @@ public class Control{
 			Iterator iteral = currGameState.FallingObjects.iterator();
 			while(iteral.hasNext())
 			{
-				iteral.remove();
+//				iteral.remove();
 			}
 			this.currGameState.Plato.ResetPlayer();
 			this.isGameRunning=true;

@@ -32,20 +32,21 @@ public class GameTimer implements Runnable{
 		this.g=g;
 	}
 
-
 	@Override
 	public void run() {
 		try{
-			while(true==isRunning)
+			while(true)
 			{
 				// Here comes the control actualize function
-				isRunning=c.RefreshData();
-				if(isRunning)
+				if(c.isGameRunning)
 				{
-					g.ReDrawAll();
+					isRunning=c.RefreshData();
+					if(isRunning)
+					{
+						g.ReDrawAll();
+					}
 				}
 				Thread.sleep(c.TIME_SAMPLE);
-				
 			}
 		}
 		catch (InterruptedException e)

@@ -30,7 +30,7 @@ public class GuiTimer implements Runnable {
 			while(isRunning==true)
 			{
 				
-				this.g.ReDrawAll();
+				//this.g.ReDrawAll();
 				
 				Thread.sleep(20);
 			}
