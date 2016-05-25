@@ -99,7 +99,7 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.mySpeed = 9;
+				this.mySpeed = 8;
 				break;
 			}
 			case eGlassOfBeer:
@@ -129,7 +129,7 @@ public class Food_Drink {
 			}
 			case eLongSpirit:
 			{
-				this.mySpeed = 7;
+				this.mySpeed = 6;
 				break;
 			}
 			case eHFullofSunfSeed:
@@ -159,7 +159,7 @@ public class Food_Drink {
 			}
 			case eHamburger:
 			{
-				this.mySpeed = 7;
+				this.mySpeed = 6;
 				break;
 			}
 			default:
@@ -269,7 +269,7 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.mySize = 3;
+				this.mySize = 5;
 				break;
 			}
 			case eGlassOfBeer:
@@ -334,7 +334,7 @@ public class Food_Drink {
 			}
 			default:
 			{
-				this.mySize = 2;
+				this.mySize = 5;
 				break;
 			}
 		} // switch

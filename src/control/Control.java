@@ -69,7 +69,12 @@ public class Control{
 					currGameState.Plato.setMyBloodAlcoholRatio(currObj.getBloodAlcoholRatio());
 					System.out.println("\n\n The object was catched by the player:\n" + currObj.toString());
 					System.out.println("Player Position:\t" + currGameState.getPlato().getMyPos().toString() +"\n" );
-					
+					if( currObj.getMyType() == new Food_Drink().getMyType())
+					{
+						// that means that the object we caught was a partyTray.. So we gain 1 extra health...
+						currGameState.Plato.myHealh=currGameState.Plato.myHealh+1;
+					}
+					currGameState.Plato.SetMaxBloodLvl();
 					iteral.remove();
 				} else {
 					// See if object is missed
@@ -113,16 +118,16 @@ public class Control{
 		objGenSpeed=this.currGameState.Plato.getMyBloodAlcoholRatio()/5;
 		switch(this.currGameState.eGameDiff){
 		case eEasy:
-			objGenSpeed=120-8*objGenSpeed;
+			objGenSpeed=120-5*objGenSpeed;
 			break;
 		case eNormal:
-			objGenSpeed=120-9*objGenSpeed;
+			objGenSpeed=100-5*objGenSpeed;
 			break;
 		case eHard:
-			objGenSpeed=120-10*objGenSpeed;
+			objGenSpeed=90-5*objGenSpeed;
 			break;
 		case eInsane:
-			objGenSpeed=100-10*objGenSpeed;
+			objGenSpeed=80-5*objGenSpeed;
 			break;
 		}
 //		System.out.println("objGenSpeed :" + objGenSpeed);
@@ -224,7 +229,7 @@ public class Control{
 				bReturn=false;
 				// The game end here
 				Stats myStats = new Stats();
-				myStats.bloodAlcoholLevel=this.currGameState.Plato.getMyBloodAlcoholRatio();
+				myStats.bloodAlcoholLevel=this.currGameState.Plato.myMaxBloodlvl;
 				myStats.duration=(int) this.currGameState.gebugCntr;
 				myStats.name=this.currGameState.Plato.myName;
 				myStats.score=this.currGameState.Plato.getMyScore();

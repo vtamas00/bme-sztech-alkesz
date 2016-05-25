@@ -39,7 +39,14 @@ public class Player {
 	/**
 	 * Current blood alcohol level of the player.
 	 */
-	private double myBloodAlcoholRatio;	
+	private double myBloodAlcoholRatio;
+	/**
+	 * Maximal blood level ratio of the palyer
+	 */
+	public double myMaxBloodlvl;
+	/**
+	 * Current score of the player
+	 */
 	private int myScore;		
 	/**
 	 * Maximum number of missed objects
@@ -134,6 +141,7 @@ public class Player {
 		this.myPos = new Position();
 		this.myScore = 0;
 		this.myBloodAlcoholRatio = 1;
+		this.myMaxBloodlvl=1;
 		this.myName = myName;
 		setMyLastPos(new Position());
 		setMyPos(new Position());
@@ -146,6 +154,7 @@ public class Player {
 		this.myPos = newPos;
 		this.myScore = 0;
 		this.myBloodAlcoholRatio = 1;
+		this.myMaxBloodlvl=1;
 		this.myName = myName;
 		setMyLastPos(newPos);
 		setMyPos(newPos);
@@ -186,5 +195,17 @@ public class Player {
 		this.NewPos.y = (double)(Position.screenHeight-this.sizeY);
 		this.myLastPos=this.NewPos;
 		this.myPos=this.NewPos;
+		this.myMaxBloodlvl=0;
+	}
+	
+	/**
+	 * This function stores the maximum blood level of the player
+	 */
+	public void SetMaxBloodLvl()
+	{
+		if(this.myMaxBloodlvl<this.myBloodAlcoholRatio)
+		{
+			this.myMaxBloodlvl=this.myBloodAlcoholRatio;
+		}
 	}
 }
