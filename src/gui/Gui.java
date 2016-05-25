@@ -21,8 +21,7 @@ import control.Control;
 import control.GameState;
 import control.GameState.Game_Difficulty;
 import control.GameState.Game_Type;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+
 
 public class Gui extends JFrame {
 
@@ -232,11 +231,7 @@ public class Gui extends JFrame {
 		
 		infoMessage = "Congratulation! You are almost the best!\nYour score: " + g.Plato.getMyScore() + "\nGame time: 0:00\nBlood percent: " + g.Plato.getMyBloodAlcoholRatio();
 		
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("");
-        alert.setHeaderText("");
-        alert.setContentText(infoMessage);
-        alert.showAndWait();
+		JOptionPane.showMessageDialog(this, infoMessage);
 	}
 
 	public void ReDrawAll() { /*
