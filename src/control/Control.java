@@ -3,13 +3,8 @@
  */
 package control;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.TimerTask;
-
-import control.Food_Drink.Food_Drinks_Type;
-import control.GameState.Game_Type;
 
 /**
  * This class contains the main logic of the game.    
@@ -60,7 +55,7 @@ public class Control{
 			// Calc the new pos of the Player
 			currGameState.Plato.setMyPos(currGameState.Plato.NewPos);
 			// Determine the New pos of the Falling objects.
-			Iterator iteral = currGameState.FallingObjects.iterator();
+			Iterator<Food_Drink> iteral = currGameState.FallingObjects.iterator();
 			while(iteral.hasNext()) {
 				Food_Drink currObj = (Food_Drink) iteral.next();
 				currObj.IncreaseMytime(TIME_SAMPLE);
@@ -254,7 +249,7 @@ public class Control{
 		{
 			this.isGameRunning=false;
 			Thread.sleep(100);
-			Iterator iteral = currGameState.FallingObjects.iterator();
+			Iterator<Food_Drink> iteral = currGameState.FallingObjects.iterator();
 			while(iteral.hasNext())
 			{ 
 				iteral.next();

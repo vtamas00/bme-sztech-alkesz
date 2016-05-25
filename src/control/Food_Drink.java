@@ -99,7 +99,7 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.mySpeed = 10;
+				this.mySpeed = 9;
 				break;
 			}
 			case eGlassOfBeer:
@@ -168,7 +168,6 @@ public class Food_Drink {
 				break;
 			}
 		} // switch
-		this.mySpeed = this.mySpeed;
 		
 	}
 	/**
@@ -270,7 +269,7 @@ public class Food_Drink {
 		{
 			case ePartyTray:
 			{
-				this.mySize = 2;
+				this.mySize = 3;
 				break;
 			}
 			case eGlassOfBeer:
@@ -530,7 +529,6 @@ public class Food_Drink {
 		Food_Drinks_Type newType = Food_Drinks_Type.eGlassOfBeer;
 		
 		double seed = rand.nextGaussian();
-		double seed_abs = Math.abs(seed); 
 //		System.out.println("seed:" + seed + ",SeedAbs: "+ seed_abs);
 		
 		

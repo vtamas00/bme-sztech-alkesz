@@ -3,9 +3,6 @@
  */
 package control;
 
-import java.util.Timer;
-
-import control.GameState.Game_Type;
 import gui.Gui;
 
 /**
@@ -29,10 +26,7 @@ public class Main {
 		Gui	myGui = new Gui(GameState,myControl);
 
 		(new Thread(new GameTimer(myControl,myGui))).start();
-		(new Thread(new GuiTimer(myGui))).start();
 		System.out.println("Good By MIT!");
-		
-		System.out.println("Now test the Stats class....!");
 		
 	}
 }

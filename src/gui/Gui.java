@@ -79,7 +79,7 @@ public class Gui extends JFrame {
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.insets = new Insets(7, 7, 7, 7);
 		
-		g.Plato.myName = JOptionPane.showInputDialog(this,"What is your username?", "HappyUser");
+		g.Plato.myName = JOptionPane.showInputDialog(this,"What is your username?", "CunciSquirel");
 		bUserName.setText("Welcome " + g.Plato.myName + "!");
 		
 		gbc.gridx = 0;
