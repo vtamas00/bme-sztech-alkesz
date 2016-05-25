@@ -21,6 +21,8 @@ import control.Control;
 import control.GameState;
 import control.GameState.Game_Difficulty;
 import control.GameState.Game_Type;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Gui extends JFrame {
 
@@ -48,6 +50,8 @@ public class Gui extends JFrame {
 
 	private GameState g;
 	private Control c;
+	
+	final CardLayout MainLayout = new CardLayout();
 	
 	public void chageUserNameDialog() {
 		g.Plato.myName = JOptionPane.showInputDialog(this,"What is your username?", "SadUser");
@@ -107,8 +111,6 @@ public class Gui extends JFrame {
 
 		SingleGamePanel.add(sw2);
 		MultiGamePanel.add(sw3);
-
-		final CardLayout MainLayout = new CardLayout();
 
 		ContainerPanel.setLayout(MainLayout);
 		ContainerPanel.add(MainMenuPanel, "MMP");
@@ -221,6 +223,20 @@ public class Gui extends JFrame {
 		pack();
 		setVisible(true);
 
+	}
+	
+	public void EndGameEvent() {
+		this.MainLayout.show(ContainerPanel, "MMP");
+		g.eGameType = Game_Type.eMenu;
+		String infoMessage = "";
+		
+		infoMessage = "Congratulation! You are almost the best!\nYour score: " + g.Plato.getMyScore() + "\nGame time: 0:00\nBlood percent: " + g.Plato.getMyBloodAlcoholRatio();
+		
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("");
+        alert.setHeaderText("");
+        alert.setContentText(infoMessage);
+        alert.showAndWait();
 	}
 
 	public void ReDrawAll() { /*
