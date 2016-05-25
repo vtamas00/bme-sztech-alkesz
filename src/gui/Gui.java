@@ -151,12 +151,13 @@ public class Gui extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainLayout.show(ContainerPanel, "MMP");
-				c.Pause();
+				g.eGameType = Game_Type.eMenu;
 				c.RestartGame();
 
 			}
 		});
 
+		// Pause button
 		sw4.addActionListener(new ActionListener() {
 
 			@Override
@@ -165,10 +166,12 @@ public class Gui extends JFrame {
 			}
 		});
 
+		// Restart button
 		sw5.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				g.eGameType = Game_Type.eMenu;
 				c.RestartGame();
 			}
 		});
@@ -185,7 +188,7 @@ public class Gui extends JFrame {
 								 * This function is scheduled to run every 20
 								 * milliseconds.
 								 */
-		
+	if (c.isGameRunning) {
 		if (g.eGameType == Game_Type.eSinglePlayer) {
 			SingleGamePanel.repaint();
 		}
@@ -193,6 +196,7 @@ public class Gui extends JFrame {
 		if (g.eGameType == Game_Type.eMultiPlayer) {
 			SingleGamePanel.repaint();
 		}
+	}
 }
 
 }
