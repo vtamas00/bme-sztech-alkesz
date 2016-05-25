@@ -115,9 +115,10 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		return this.ShowGS;
 	}
 
+	// This function draw all graphics to the gamespace. The call frequency is 20ms.
 	@Override
 	public void paintComponent(Graphics g2d) {
-		//super.paintComponent(g2d);
+		super.paintComponent(g2d);
 		
 		BufferedImage foreground, output;
 		foreground = new BufferedImage((int)g.Plato.myPos.GetScreenWidth(),(int)g.Plato.myPos.GetScreenHeight()+60,BufferedImage.TYPE_INT_ARGB);

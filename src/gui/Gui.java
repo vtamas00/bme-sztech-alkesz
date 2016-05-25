@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -14,13 +15,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import control.Control;
 import control.GameState;
 import control.GameState.Game_Difficulty;
 import control.GameState.Game_Type;
+import control.Stats;
 
 
 public class Gui extends JFrame {
@@ -46,11 +51,13 @@ public class Gui extends JFrame {
 	JPanel MainMenuPanel = new JPanel();
 	GameSpacePanel SingleGamePanel = new GameSpacePanel();
 	GameSpacePanel MultiGamePanel = new GameSpacePanel();
+	
 
 	private GameState g;
 	private Control c;
 	
 	final CardLayout MainLayout = new CardLayout();
+
 	
 	public void chageUserNameDialog() {
 		g.Plato.myName = JOptionPane.showInputDialog(this,"What is your username?", "SadUser");
@@ -115,6 +122,7 @@ public class Gui extends JFrame {
 		ContainerPanel.add(MainMenuPanel, "MMP");
 		ContainerPanel.add(SingleGamePanel, "SGP");
 		ContainerPanel.add(MultiGamePanel, "MGP");
+
 		ContainerPanel.setPreferredSize(new Dimension((int)g.Plato.myPos.GetScreenWidth(), (int)g.Plato.myPos.GetScreenHeight()+60));
 
 		MainLayout.show(ContainerPanel, "MMP");
@@ -127,17 +135,6 @@ public class Gui extends JFrame {
 				c.resetGame();
 				c.StartGame();
 				
-			}
-		});
-		
-		bMultiPlayer.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MainLayout.show(ContainerPanel, "MGP");
-				g.eGameType = Game_Type.eMultiPlayer;
-				c.resetGame();
-				c.StartGame();				
 			}
 		});
 		
@@ -217,6 +214,15 @@ public class Gui extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				chageUserNameDialog();
+			}
+		});
+		
+		bStatistics.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameStatsDisplay();
+				MainLayout.show(ContainerPanel, "STAT");
 				
 			}
 		});
@@ -259,6 +265,47 @@ public class Gui extends JFrame {
 		infoMessage = "Congratulation! You are almost the best!\nYour score: " + g.Plato.getMyScore() + "\nGame time: "+zero_min + time_min + ":" + zero_sec + time_sec+"\nBlood percent: " + g.Plato.getMyBloodAlcoholRatio() + "%\nLevel: "+ g.eGameDiff;
 		
 		JOptionPane.showMessageDialog(this, infoMessage);
+	}
+	
+	public void gameStatsDisplay() {
+		
+			JPanel statsPanel = new JPanel();
+			ContainerPanel.add(statsPanel, "STAT");
+			
+			//statsPanel.setPreferredSize(new Dimension((int)(g.Plato.myPos.GetScreenWidth()*0.5),(int)(g.Plato.myPos.GetScreenHeight()*0.5)));
+			
+	        JButton bBackMainMenu = new JButton("Main menu");
+	        bBackMainMenu.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					MainLayout.show(ContainerPanel, "MMP");					
+				}
+			});
+	        
+	        //statsPanel.setLayout(new BorderLayout());
+
+	        DefaultTableModel model = new DefaultTableModel();
+	        model.addColumn("Name");
+	        model.addColumn("Score");
+	        model.addColumn("Game duration");
+	        model.addColumn("Blood alcohol ");
+	        
+	        JTable statTable = new JTable(model);
+	        JScrollPane tableContainer = new JScrollPane(statTable);
+	        
+	        //statTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	        tableContainer.setPreferredSize(new Dimension((int)(g.Plato.myPos.GetScreenWidth()*0.8),(int)(g.Plato.myPos.GetScreenHeight()*0.8)));
+	        
+	        statsPanel.add(bBackMainMenu);
+	        statsPanel.add(tableContainer, BorderLayout.CENTER);
+	        for ( Stats item : g.gameStats ){
+	        	model.addRow(new Object[]{item.name,item.score ,item.duration ,item.bloodAlcoholLevel});
+	        }
+
+	        
+	        System.out.println("DisplayStatTable");
+	        this.repaint();
 	}
 
 	public void ReDrawAll() { /*
