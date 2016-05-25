@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 import control.Control;
 import control.GameState;
+import control.GameState.Game_Difficulty;
 import control.GameState.Game_Type;
 
 public class Gui extends JFrame {
@@ -135,7 +136,27 @@ public class Gui extends JFrame {
 				int level = JOptionPane.showOptionDialog(null, "Please set the game level", "Settings",
 				        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
 				        null, possibilities, possibilities[0]);
-				
+				switch(level) {
+					case 0:
+						g.eGameDiff = Game_Difficulty.eEasy;
+						System.out.println("Level: Easy.");
+						break;
+					case 1:
+						g.eGameDiff = Game_Difficulty.eNormal;
+						System.out.println("Level: Normal.");
+						break;
+					case 2:
+						g.eGameDiff = Game_Difficulty.eHard;
+						System.out.println("Level: Hard.");
+						break;
+					case 3:
+						g.eGameDiff = Game_Difficulty.eInsane;
+						System.out.println("Level: Insane.");
+						break;
+					default:
+						g.eGameDiff = Game_Difficulty.eEasy;
+						break;
+				}
 			}
 		});
 
@@ -171,7 +192,6 @@ public class Gui extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				g.eGameType = Game_Type.eMenu;
 				c.RestartGame();
 			}
 		});
@@ -188,7 +208,7 @@ public class Gui extends JFrame {
 								 * This function is scheduled to run every 20
 								 * milliseconds.
 								 */
-		System.out.println("reDraw");
+
 	if (c.isGameRunning) {
 		if (g.eGameType == Game_Type.eSinglePlayer) {
 			SingleGamePanel.repaint();

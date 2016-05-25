@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
@@ -120,7 +119,7 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 	public void paintComponent(Graphics g2d) {
 		//super.paintComponent(g2d);
 		
-		BufferedImage background, foreground, output;
+		BufferedImage foreground, output;
 		foreground = new BufferedImage((int)g.Plato.myPos.GetScreenWidth(),(int)g.Plato.myPos.GetScreenHeight()+60,BufferedImage.TYPE_INT_ARGB);
 		output = new BufferedImage((int)g.Plato.myPos.GetScreenWidth(),(int)g.Plato.myPos.GetScreenHeight()+60,BufferedImage.TYPE_INT_ARGB);
 	    Graphics2D canvas = output.createGraphics();
@@ -129,9 +128,9 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		
 		final int X = 15;
 		int Y = 50;
-		final int GAP = 15;
+		// final int GAP = 15;
 		Font f = new Font("Verdana", Font.BOLD, 13);
-		Font l = new Font("Verdana", Font.PLAIN, 8);
+		// Font l = new Font("Verdana", Font.PLAIN, 8);
 		long time_sec;
 		long time_min;
 		
@@ -187,7 +186,7 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		
 		// Draw cover
 		overlay.setColor(Color.green);
-		int coverRatio = (int) (g.Plato.myPos.GetScreenHeight()*(int)g.Plato.getMyBloodAlcoholRatio()/80);
+		int coverRatio = (int) (g.Plato.myPos.GetScreenHeight()*(int)g.Plato.getMyBloodAlcoholRatio()/60);
 		overlay.fillRect(0, 0, (int)g.Plato.myPos.GetScreenWidth(), coverRatio);	
 
 		
@@ -257,7 +256,7 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 			break;
 
 		case ePartyTray:
-			fallingImage = kaja5;
+			fallingImage = kv;
 			break;
 
 		}
