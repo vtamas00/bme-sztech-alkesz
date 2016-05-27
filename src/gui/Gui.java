@@ -27,43 +27,128 @@ import control.GameState.Game_Difficulty;
 import control.GameState.Game_Type;
 import control.Stats;
 
-
+	/**
+	 * Implements the main window. 
+	 * 
+	 * @author vtamas
+	 * 
+	 */
 public class Gui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	
+	/**
+	 * Define the grid size for the grid layout.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
 	Dimension gridSize = new Dimension(300, 90);
+	
+	
+	/**
+	 * Labels on the Main Menu
+	 * 
+	 * @author vtamas
+	 *
+	 */	
 
 	JLabel bWelcome = new JLabel("Main menu");
 	JLabel bUserName = new JLabel();
+	
+	
+	/**
+	 * Buttons on the Main menu
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+
+	
+	
 	JButton bSinglePlayer = new JButton("Single Player");
 	JButton bMultiPlayer = new JButton("Multi Player");
 	JButton bSettings = new JButton("Settings");
 	JButton bStatistics = new JButton("Statistics");
 	JButton bChangeUser = new JButton("Change user");
 
+	/**
+	 * Buttons on the Game Panel
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+
+	
 	JButton sw2 = new JButton("Main menu");
 	JButton sw3 = new JButton("Main menu");
 	JButton sw4 = new JButton("Pasue");
 	JButton sw5 = new JButton("Reset");
 
+	/**
+	 * ContainerPanel is the active panel, what the user can see
+	 * 
+	 * GUI Panels for the gamespace and menus.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+
+	
 	JPanel ContainerPanel = new JPanel();
 	JPanel MainMenuPanel = new JPanel();
 	GameSpacePanel SingleGamePanel = new GameSpacePanel();
 	GameSpacePanel MultiGamePanel = new GameSpacePanel();
 	
+	/**
+	 * Local reference to the global GameState and Control class.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+
 
 	private GameState g;
 	private Control c;
+
+	/**
+	 * The layout class for the container panel.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
 	
 	final CardLayout MainLayout = new CardLayout();
 
+	/**
+	 * This function is called when the user click to the Change Username option on the Main menu.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
 	
 	public void chageUserNameDialog() {
 		g.Plato.myName = JOptionPane.showInputDialog(this,"What is your username?", "SadUser");
 		bUserName.setText("Welcome " + g.Plato.myName + "!");
 		this.repaint();
 	}
+
+	/**
+	 * Constructor in the GUI class. Build the whole menu and the windows.
+	 * 
+	 * There are the action listener functions for the buttons on the main menu.
+	 * 
+	 *  @param gameState
+	 *  			Reference to the global Gamestate object
+	 *  
+	 *  @param control
+	 *  			Reference to the global Control instance
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+	
 
 	public Gui(GameState gameState, Control control) {
 
@@ -138,6 +223,14 @@ public class Gui extends JFrame {
 			}
 		});
 		
+		/**
+		 * Generate the modal pop up for the game level choice.
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+		
+
 		bSettings.addActionListener(new ActionListener() {
 			
 			@Override
@@ -262,11 +355,22 @@ public class Gui extends JFrame {
 			zero_sec = ""; 	
 		}
 		
-		infoMessage = "Congratulation! You are almost the best!\nYour score: " + g.Plato.getMyScore() + "\nGame time: "+zero_min + time_min + ":" + zero_sec + time_sec+"\nBlood percent: " + g.Plato.getMyBloodAlcoholRatio() + "%\nLevel: "+ g.eGameDiff;
+		infoMessage = "Congratulations! You are almost the best!\nYour score: " + g.Plato.getMyScore() + "\nGame time: "+zero_min + time_min + ":" + zero_sec + time_sec+"\nBlood percent: " + g.Plato.getMyBloodAlcoholRatio() + "%\nLevel: "+ g.eGameDiff;
 		
 		JOptionPane.showMessageDialog(this, infoMessage);
 	}
+	/**
+	 * This function is called when the user click to the Statistics option on the Main menu.
+	 * Generate the content for the statistics menu.
+	 * 
+	 * 
+	 * The statistics panel consists dynamic data, has to refresh after every play.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
 	
+
 	public void gameStatsDisplay() {
 		
 			JPanel statsPanel = new JPanel();
@@ -307,6 +411,13 @@ public class Gui extends JFrame {
 	        System.out.println("DisplayStatTable");
 	        this.repaint();
 	}
+	/**
+	 * This function is called in every 20 milliseconds and responsible for the repaint the whole game space.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+	
 
 	public void ReDrawAll() { /*
 								 * This function is scheduled to run every 20

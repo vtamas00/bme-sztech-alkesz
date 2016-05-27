@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * This class is responsible for the game space.
+ * This class is build up the game space.
  */
 
 public class GameSpacePanel extends JPanel implements MouseMotionListener {
@@ -28,6 +28,15 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * References for the global GameState and Control classes.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+	
+	
 	private GameState g;
 	private Control c;
 	private boolean ShowGS;
@@ -38,16 +47,27 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 
 	private URL resource;
 
+	/**
+	 * This function is the constructor for this class. Register the mouse listener and load the pictures.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
 	
+
 	public GameSpacePanel() {
 		this.addMouseMotionListener(this);
 		
 		loadAllImages();
-			}
+	}
 	
 	/**
-	 * Load all Image when the game is starting.
+	 * Copy the pictures to the memory.
+	 * 
+	 * @author vtamas
+	 *
 	 */	
+	
 	private void loadAllImages() {
 
 		try {
@@ -107,6 +127,14 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		c = co;
 	}
 	
+	/**
+	 * The Show GameState variable is only for debug. This is unused in the release.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+	
+	
 	public void setShowGS(boolean b) {
 		this.ShowGS = b;
 	}
@@ -115,7 +143,15 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		return this.ShowGS;
 	}
 
-	// This function draw all graphics to the gamespace. The call frequency is 20ms.
+
+	/**
+	 * This function draw all graphics to the gamespace. The call frequency is 20ms.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+	
+
 	@Override
 	public void paintComponent(Graphics g2d) {
 		super.paintComponent(g2d);
@@ -129,9 +165,7 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		
 		final int X = 15;
 		int Y = 50;
-		// final int GAP = 15;
 		Font f = new Font("Verdana", Font.BOLD, 13);
-		// Font l = new Font("Verdana", Font.PLAIN, 8);
 		long time_sec;
 		long time_min;
 		
@@ -153,50 +187,126 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 			zero_sec = ""; 	
 		}
 		
-		// Draw white background
+ 
+		/**
+		 * Draw white background
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+		
+		
 		g2d.setColor(Color.white);
 		g2d.fillRect(0, 0, (int)g.Plato.myPos.GetScreenWidth(), (int)g.Plato.myPos.GetScreenHeight()+60);
 		
 		g2d.setColor(Color.black);
 		g2d.setFont(f);
 		
-		// Print time
+		/**
+		 * Print time
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+		
 		g2d.drawString(zero_min + time_min + ":" + zero_sec + time_sec, X, Y);
-		// Print bloodpercent
+		
+		/**
+		 * Print health 
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+
 		g2d.drawString(""+g.Plato.getMyHealh(), (int)(g.Plato.myPos.GetScreenWidth()*0.35), Y);
-		// Print bloodpercent
+		
+		/**
+		 * Print blood percent
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+
 		g2d.drawString(g.Plato.getMyBloodAlcoholRatio()+"%", (int)(g.Plato.myPos.GetScreenWidth()*0.65), Y);
-		// Print experience point
+
+		/**
+		 * Print experience points
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+
 		g2d.drawString(g.Plato.getMyScore()+"xp", (int) (g.Plato.myPos.GetScreenWidth()-70), Y);
 
-		// Draw falling objects
-		
+
+		/**
+		 * Draw falling objects
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+
 		for (Food_Drink item : g.FallingObjects ) {
 			// g2d.fillOval((int)item.myPos.x-item.mySize/2, (int)item.myPos.y-item.mySize/2, item.mySize, item.mySize);
 			overlay.drawImage(imageOfFoodDring(item.getMyType()), (int)item.myPos.x-item.mySize/2, (int)item.myPos.y-item.mySize/2, item.mySize, item.mySize, this);
 		}
 
-		
-		// Draw plato
+		 
+		/**
+		 * Draw plato
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+
 		overlay.setColor(Color.black);
 		overlay.fillRect((int)g.Plato.getMyPos().x, (int)g.Plato.getMyPos().y, g.Plato.sizeX, g.Plato.sizeY);
 		
+		/**
+		 * For debug
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+
 		//System.out.println("X=" + g.Plato.getMyPos().x + " Y=" + g.Plato.getMyPos().y + " SizeX=" + g.Plato.sizeX + " SizeY=" + g.Plato.sizeY);
 		//System.out.println("NewPosX=" + g.Plato.NewPos.x  + " NoewPosY=" + g.Plato.NewPos.y);
 		
 		
-		// Draw cover
+		/**
+		 * Draw cover
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+
 		overlay.setColor(Color.white);
 		int coverRatio = (int) (g.Plato.myPos.GetScreenHeight()*(int)g.Plato.getMyBloodAlcoholRatio()/60);
 		overlay.fillRect(0, 0, (int)g.Plato.myPos.GetScreenWidth(), coverRatio);	
 
-		
+		/**
+		 * Build up the final game space.
+		 * 
+		 * @author vtamas
+		 *
+		 */	
+
 		
 		canvas.drawImage(foreground, 0, 60, null);
 	    overlay.dispose();
 	    canvas.dispose();
 	    g2d.drawImage(output, 0, 0, null);
 	}
+	
+	
+	/**
+	 * This function returns the appropriate image for the current drawing object.
+	 * It makes a connection between the object type and the image.
+	 * 
+	 * @author vtamas
+	 *
+	 */	
+
 	
 	private BufferedImage imageOfFoodDring(Food_Drinks_Type myType) {
 		BufferedImage fallingImage;
@@ -267,12 +377,25 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 	}
 
 
+	/**
+	 * It returns the position of the mouse during click
+	 * 
+	 * @author vtamas
+	 *
+	 */	
 
 	@Override
 	public void mouseDragged(MouseEvent evt) {
 		g.NPos((double)evt.getPoint().x);
 		c.HandleUserEvent();				
 	}
+	
+	/**
+	 * It returns the position of the mouse
+	 * 
+	 * @author vtamas
+	 *
+	 */	
 
 	@Override
 	public void mouseMoved(MouseEvent evt) {
