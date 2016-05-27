@@ -275,13 +275,24 @@ public class GameSpacePanel extends JPanel implements MouseMotionListener {
 		
 		/**
 		 * Draw cover
+		 * The cover ratio is depend on the blood ratio and the time.
+		 * The cover ratio maximum is  the 75% of the game space.
 		 * 
 		 * @author vtamas
 		 *
 		 */	
 
 		overlay.setColor(Color.white);
-		int coverRatio = (int) (g.Plato.myPos.GetScreenHeight()*(int)g.Plato.getMyBloodAlcoholRatio()/60);
+		time_sec = (this.g.gebugCntr/50);
+
+		
+		int coverRatio = (int)(g.Plato.getMyBloodAlcoholRatio()*5)+(int)(time_sec/10);
+		
+		
+		if (coverRatio > (int)(g.Plato.myPos.GetScreenHeight()*0.65)) {
+			coverRatio = (int) (g.Plato.myPos.GetScreenHeight()*0.65);
+		}
+		
 		overlay.fillRect(0, 0, (int)g.Plato.myPos.GetScreenWidth(), coverRatio);	
 
 		/**
